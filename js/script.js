@@ -1,9 +1,9 @@
 // ===== TYPING ANIMATION =====
 const typingText = document.querySelector('.typing-text');
 const words = [
-    'History',
     'Machine Learning',
     'Data Science',
+    'Programming',
     'Deep Learning',
     'Web Development',
     'Mobile Development',
@@ -12,9 +12,10 @@ const words = [
     'UI/UX Design',
     'Robotics',
     'Human-AI Interaction',
-    'Programming',
     'Philosophy',
+    'Open Source',
     'Linux',
+    'History',
 ];
 
 let wordIndex = 0;
