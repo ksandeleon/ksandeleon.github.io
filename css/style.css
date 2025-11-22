@@ -171,7 +171,6 @@ body {
     align-items: center;
     justify-content: center;
     gap: 60px;
-    /* padding: 20px 40px; */
 }
 
 /* Profile photo */
@@ -401,7 +400,6 @@ body {
     .intro-content {
         flex-direction: column;
         gap: 40px;
-        padding: 40px 20px;
     }
 
     .intro-photo {
@@ -448,7 +446,6 @@ body {
 @media (max-width: 768px) {
     .intro-content {
         gap: 30px;
-        padding: 40px 20px;
     }
 
     .intro-photo {
@@ -511,7 +508,6 @@ body {
 @media (max-width: 480px) {
     .intro-content {
         gap: 25px;
-        padding: 30px 15px;
     }
 
     .intro-photo {
