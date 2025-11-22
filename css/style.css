@@ -171,16 +171,15 @@ body {
     align-items: center;
     justify-content: center;
     gap: 60px;
-    padding: 60px 40px;
+    /* padding: 20px 40px; */
 }
 
 /* Profile photo */
 .intro-photo {
-    width: 280px;
-    height: 280px;
+    width: 700px;
+    height: 500px;
     border-radius: 50%;
     overflow: hidden;
-    border: 5px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
     flex-shrink: 0;
 }
@@ -204,7 +203,7 @@ body {
     gap: 20px;
 }
 
-/* Name styling - NO ANIMATION */
+/* Name styling */
 .intro-name {
     font-size: 5rem;
     font-weight: 800;
@@ -218,6 +217,41 @@ body {
     color: #222;
 }
 
+
+/* Icons */
+.icon-svg {
+    color: #fff;
+    width: 22px;
+    height: 22px;
+    display: block;
+    opacity: 0.7;
+    transition: opacity 0.2s, filter 0.2s;
+    filter: invert(1) brightness(2); /* white for dark bg */
+}
+
+.section:not(.active) .intro-icons .icon-svg {
+    filter: invert(0) brightness(0.2); /* black for light bg */
+}
+
+.intro-icons a:hover .icon-svg {
+    opacity: 1;
+    filter: drop-shadow(0 0 2px #00bfff) invert(1) brightness(2);
+}
+
+.section:not(.active) .intro-icons a:hover .icon-svg {
+    filter: drop-shadow(0 0 2px #00bfff) invert(0) brightness(0.2);
+}
+
+.intro-icons {
+    margin-top: 2px;
+    margin-left: 500px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
 /* Tagline with typing animation */
 .intro-tagline {
     font-size: 2rem;
@@ -226,6 +260,7 @@ body {
     align-items: center;
     gap: 8px;
     font-weight: 300;
+    margin-left: 12px;
 }
 
 .section:not(.active) .intro-tagline {
@@ -243,7 +278,7 @@ body {
 }
 
 .typing-text {
-    font-weight: 700;
+    /* font-weight: 700; */
     color: #ffffff;
 }
 
@@ -355,4 +390,47 @@ body {
         width: 8px;
         height: 1.2rem;
     }
+}
+
+/* Photo Modal Styles */
+.photo-modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.5s;
+}
+
+.photo-modal.active {
+    display: flex;
+}
+
+.photo-modal-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(16px);
+    z-index: 1;
+    animation: fadeIn 0.5s;
+}
+
+.photo-modal-img {
+    position: relative;
+    z-index: 2;
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 24px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.7);
+    animation: fadeIn 0.7s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }

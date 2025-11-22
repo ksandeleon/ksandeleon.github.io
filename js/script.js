@@ -155,3 +155,25 @@ window.addEventListener('scroll', () => {
 // Initialize on page load
 updateActiveDot();
 updateDotColors();
+
+// ===== PHOTO MODAL =====
+const photoBg = document.querySelector('.intro-photo-bg, .intro-photo');
+const photoModal = document.getElementById('photo-modal');
+const photoModalBg = document.querySelector('.photo-modal-bg');
+const photoModalImg = document.querySelector('.photo-modal-img');
+
+if (photoBg && photoModal) {
+    photoBg.style.cursor = 'pointer';
+    photoBg.addEventListener('click', () => {
+        photoModal.classList.add('active');
+    });
+}
+
+if (photoModalBg && photoModalImg) {
+    photoModalBg.addEventListener('click', () => {
+        photoModal.classList.remove('active');
+    });
+    photoModalImg.addEventListener('click', () => {
+        photoModal.classList.remove('active');
+    });
+}
