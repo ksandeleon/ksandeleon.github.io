@@ -163,3 +163,174 @@ body {
 .dot-link.pop .dot {
     animation: pop 0.4s ease;
 }
+
+/* ===== INTRO SECTION ===== */
+.intro-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    padding: 60px 40px;
+}
+
+/* Profile photo */
+.intro-photo {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+    flex-shrink: 0;
+}
+
+.intro-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Color adaptation for photo border */
+.section:not(.active) .intro-photo {
+    border-color: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Text container */
+.intro-text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Name styling - NO ANIMATION */
+.intro-name {
+    font-size: 5rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: 3px;
+}
+
+/* Color adaptation for name on white background */
+.section:not(.active) .intro-name {
+    color: #222;
+}
+
+/* Tagline with typing animation */
+.intro-tagline {
+    font-size: 2rem;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 300;
+}
+
+.section:not(.active) .intro-tagline {
+    color: #333;
+}
+
+.tagline-static {
+    opacity: 0.9;
+}
+
+.typing-wrapper {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+.typing-text {
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.section:not(.active) .typing-text {
+    color: #222;
+}
+
+/* Solid block cursor like vim */
+.cursor {
+    display: inline-block;
+    width: 12px;
+    height: 2rem;
+    background-color: #ffffff;
+    animation: blink 1s infinite;
+    margin-left: 2px;
+}
+
+.section:not(.active) .cursor {
+    background-color: #222;
+}
+
+@keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+/* Responsive styles for intro */
+@media (max-width: 968px) {
+    .intro-content {
+        flex-direction: column;
+        gap: 40px;
+        padding: 40px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .intro-content {
+        gap: 30px;
+        padding: 40px 20px;
+    }
+
+    .intro-photo {
+        width: 220px;
+        height: 220px;
+        border-width: 4px;
+    }
+
+    .intro-name {
+        font-size: 3.5rem;
+        letter-spacing: 2px;
+    }
+
+    .intro-tagline {
+        font-size: 1.5rem;
+        gap: 6px;
+    }
+
+    .cursor {
+        width: 10px;
+        height: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .intro-content {
+        gap: 25px;
+        padding: 30px 15px;
+    }
+
+    .intro-photo {
+        width: 180px;
+        height: 180px;
+        border-width: 3px;
+    }
+
+    .intro-name {
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+    }
+
+    .intro-tagline {
+        font-size: 1.2rem;
+        flex-wrap: wrap;
+    }
+
+    .cursor {
+        width: 8px;
+        height: 1.2rem;
+    }
+}
