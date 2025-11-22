@@ -3,10 +3,18 @@ const typingText = document.querySelector('.typing-text');
 const words = [
     'History',
     'Machine Learning',
-    'Web Development',
     'Data Science',
+    'Deep Learning',
+    'Web Development',
+    'Mobile Development',
+    'Game Development',
+    'Artificial Intelligence',
+    'UI/UX Design',
+    'Robotics',
+    'Human-AI Interaction',
+    'Programming',
     'Philosophy',
-    'Technology'
+    'Linux',
 ];
 
 let wordIndex = 0;

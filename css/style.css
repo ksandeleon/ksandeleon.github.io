@@ -312,6 +312,19 @@ body {
         gap: 40px;
         padding: 40px 20px;
     }
+
+    .intro-photo {
+        width: 280px;
+        height: 280px;
+    }
+
+    .intro-icons {
+        margin-left: 150px;
+    }
+
+    .intro-tagline {
+        margin-left: 12px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -323,7 +336,6 @@ body {
     .intro-photo {
         width: 220px;
         height: 220px;
-        border-width: 4px;
     }
 
     .intro-name {
@@ -334,11 +346,16 @@ body {
     .intro-tagline {
         font-size: 1.5rem;
         gap: 6px;
+        margin-left: 12px;
     }
 
     .cursor {
         width: 10px;
         height: 1.5rem;
+    }
+
+    .intro-icons {
+        margin-left: 150px;
     }
 
     .dot-nav {
@@ -373,7 +390,6 @@ body {
     .intro-photo {
         width: 180px;
         height: 180px;
-        border-width: 3px;
     }
 
     .intro-name {
@@ -383,12 +399,23 @@ body {
 
     .intro-tagline {
         font-size: 1.2rem;
-        flex-wrap: wrap;
+        margin-left: 12px;
     }
 
     .cursor {
         width: 8px;
         height: 1.2rem;
+    }
+
+    .intro-icons {
+        margin-top: 2px;
+        margin-left: 150px;
+        gap: 10px;
+    }
+
+    .icon-svg {
+        width: 20px;
+        height: 20px;
     }
 }
 
@@ -433,4 +460,35 @@ body {
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+
+/* Tooltip for email icon */
+.icon-email {
+    position: relative;
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: -36px;
+    transform: translateX(-50%);
+    background: #fff;
+    color: #222;
+    font-size: 1.08rem;
+    padding: 5px 14px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    white-space: nowrap;
+    z-index: 10;
+    font-family: inherit;
+    /* font-weight: 700; */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+
+.icon-email:hover .tooltip {
+    display: block;
+    opacity: 1;
 }
