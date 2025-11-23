@@ -186,3 +186,40 @@ if (photoModalBg && photoModalImg) {
         photoModal.classList.remove('active');
     });
 }
+
+// ===== GITHUB STATS FETCHER =====
+async function fetchGitHubStats() {
+    const statElements = document.querySelectorAll('[data-repo]');
+
+    // Group by repo to minimize API calls
+    const repos = new Set();
+    statElements.forEach(el => repos.add(el.getAttribute('data-repo')));
+
+    for (const repo of repos) {
+        try {
+            const response = await fetch(`https://api.github.com/repos/${repo}`);
+            if (response.ok) {
+                const data = await response.json();
+
+                // Update stars
+                const starsElements = document.querySelectorAll(`[data-repo="${repo}"][data-stat="stars"]`);
+                starsElements.forEach(el => {
+                    el.textContent = data.stargazers_count;
+                });
+
+                // Update forks
+                const forksElements = document.querySelectorAll(`[data-repo="${repo}"][data-stat="forks"]`);
+                forksElements.forEach(el => {
+                    el.textContent = data.forks_count;
+                });
+            }
+        } catch (error) {
+            console.error(`Error fetching stats for ${repo}:`, error);
+        }
+    }
+}
+
+// Fetch GitHub stats when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    fetchGitHubStats();
+});
