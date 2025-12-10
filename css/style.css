@@ -1074,7 +1074,7 @@ body {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 790px) {
     .intro-content {
         gap: 30px;
     }
