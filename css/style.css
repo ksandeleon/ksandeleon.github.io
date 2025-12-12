@@ -412,8 +412,8 @@ body {
     justify-content: flex-start;
     align-items: center;
     padding: 0 20px;
-    max-height: 100vh;
-    overflow: hidden;
+    height: 100%;
+    overflow-y: auto; /* Allow scrolling if content exceeds viewport */
 }
 
 .projects-title {
@@ -436,41 +436,134 @@ body {
     gap: 12px;
     max-width: 1000px;
     width: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
-    max-height: calc(100vh - 180px);
-    padding-right: 10px;
+    padding-right: 0;
 }
 
-/* Custom scrollbar */
-.projects-container::-webkit-scrollbar {
-    width: 6px;
+/* Search Styles */
+.search-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
 }
 
-.projects-container::-webkit-scrollbar-track {
+.search-input {
+    width: 100%;
+    padding: 12px 20px;
+    padding-right: 40px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     background: rgba(255, 255, 255, 0.05);
-    border-radius: 3px;
+    color: #fff;
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.3s ease;
 }
 
-.section:not(.active) .projects-container::-webkit-scrollbar-track {
+.section:not(.active) .search-input {
     background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #222;
 }
 
-.projects-container::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 3px;
+.search-input:focus {
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.1);
 }
 
-.section:not(.active) .projects-container::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
+.section:not(.active) .search-input:focus {
+    border-color: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.08);
 }
 
-.projects-container::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.3);
+.search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.5);
+    pointer-events: none;
 }
 
-.section:not(.active) .projects-container::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.3);
+.section:not(.active) .search-icon {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+/* Pagination Styles */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.pagination-btn {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.section:not(.active) .pagination-btn {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #222;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.section:not(.active) .pagination-btn:hover:not(:disabled) {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.page-info {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.section:not(.active) .page-info {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+/* Loading & No Projects */
+.loading-spinner, .no-projects {
+    text-align: center;
+    padding: 40px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.1rem;
+}
+
+.section:not(.active) .loading-spinner,
+.section:not(.active) .no-projects {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+/* Language Tag */
+.language-tag {
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.section:not(.active) .language-tag {
+    background: rgba(0, 0, 0, 0.08);
+    color: rgba(0, 0, 0, 0.7);
 }
 
 .project-card {
