@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let isScrolling = false;
     let currentSectionIndex = 0;
+    let isAnimating = false;
 
     // Update active dot based on scroll position
     function updateActiveDot() {
@@ -59,23 +60,27 @@ document.addEventListener('DOMContentLoaded', function() {
         const distance = targetPosition - startPosition;
         let startTime = null;
 
+        isAnimating = true;
+
         function animation(currentTime) {
             if (startTime === null) startTime = currentTime;
             const timeElapsed = currentTime - startTime;
             const progress = Math.min(timeElapsed / duration, 1);
-            
+
             // Smooth ease-in-out cubic for natural feel
             const ease = progress < 0.5
                 ? 4 * progress * progress * progress
                 : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-            
+
             window.scrollTo(0, startPosition + distance * ease);
-            
+
             // Update sections to black as we scroll through them
             updateActiveDot();
 
             if (timeElapsed < duration) {
                 requestAnimationFrame(animation);
+            } else {
+                isAnimating = false;
             }
         }
 
@@ -86,19 +91,25 @@ document.addEventListener('DOMContentLoaded', function() {
     navLinks.forEach((link, clickedIndex) => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
+
+            // Prevent clicking while animation is in progress
+            if (isAnimating) {
+                return;
+            }
+
             const targetId = link.getAttribute('data-section');
             const targetSection = document.getElementById(targetId);
 
             if (targetSection) {
                 const targetPosition = targetSection.offsetTop;
-                
+
                 // Calculate number of sections traveled
                 const sectionsTraveled = Math.abs(clickedIndex - currentSectionIndex);
-                
+
                 // 1.5 seconds per section = 1500ms per section
                 // Minimum 1.5 seconds even for same section or adjacent sections
                 const duration = Math.max(sectionsTraveled * 1500, 1500);
-                
+
                 smoothScrollTo(targetPosition, duration);
             }
         });
