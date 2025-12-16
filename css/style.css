@@ -360,6 +360,7 @@ body {
     letter-spacing: 0.8px;
     font-weight: 300;
     padding-right: 32px;
+    text-align: justify;
 }
 
 .aboutme-text p {
@@ -397,6 +398,22 @@ body {
 
 .section:not(.active) .heythere-line {
     color: #222;
+}
+
+/* FOSS Link Styling */
+.foss-link {
+    text-decoration: underline;
+    color: inherit;
+    transition: opacity 0.3s ease, text-decoration-color 0.3s ease;
+}
+
+.foss-link:hover {
+    opacity: 0.7;
+    text-decoration-color: rgba(255, 255, 255, 0.5);
+}
+
+.section:not(.active) .foss-link:hover {
+    text-decoration-color: rgba(0, 0, 0, 0.5);
 }
 
 
