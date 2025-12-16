@@ -1,6 +1,5 @@
 /* Smooth scrolling */
 html {
-    scroll-behavior: smooth;
     overflow-x: hidden;
 }
 
@@ -62,13 +61,13 @@ body {
 /* Dot Navigation */
 .dot-nav {
     position: fixed;
-    right: 30px;
+    right: 24px;
     top: 50%;
     transform: translateY(-50%);
     z-index: 1000;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 24px;
 }
 
 .dot-link {
@@ -87,8 +86,8 @@ body {
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    width: 2px;
-    height: 30px;
+    width: 1.6px;
+    height: 24px;
     background: rgba(255, 255, 255, 0.3);
     transition: background 0.3s ease;
 }
@@ -100,11 +99,11 @@ body {
 
 /* Dot circle - Default white for black backgrounds */
 .dot {
-    width: 12px;
-    height: 12px;
+    width: 9.6px;
+    height: 9.6px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.4);
-    border: 2px solid rgba(255, 255, 255, 0.6);
+    border: 1.6px solid rgba(255, 255, 255, 0.6);
     transition: all 0.3s ease;
     display: block;
 }
@@ -138,13 +137,13 @@ body {
 .dot-link.active .dot {
     background: #ffffff;
     border-color: #ffffff;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
 }
 
 .dot-link.on-white.active .dot {
     background: #000000;
     border-color: #000000;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
 }
 
 /* Pop animation */
@@ -175,16 +174,16 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 60px;
+    gap: 48px;
 }
 
 /* Profile photo */
 .intro-photo {
-    width: 480px;
-    height: 480px;
+    width: 384px;
+    height: 384px;
     border-radius: 50%;
     overflow: hidden;
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
     flex-shrink: 0;
 }
 
@@ -197,23 +196,23 @@ body {
 /* Color adaptation for photo border */
 .section:not(.active) .intro-photo {
     border-color: rgba(0, 0, 0, 0.3);
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 /* Text container */
 .intro-text {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
 }
 
 /* Name styling */
 .intro-name {
-    font-size: 5rem;
+    font-size: 4rem;
     font-weight: 800;
     color: #ffffff;
     margin: 0;
-    letter-spacing: 3px;
+    letter-spacing: 2.4px;
 }
 
 /* Color adaptation for name on white background */
@@ -224,8 +223,8 @@ body {
 /* Icons */
 .icon-svg {
     color: #fff;
-    width: 22px;
-    height: 22px;
+    width: 17.6px;
+    height: 17.6px;
     display: block;
     opacity: 0.7;
     transition: opacity 0.2s, filter 0.2s;
@@ -246,25 +245,25 @@ body {
 }
 
 .intro-icons {
-    margin-top: 2px;
-    margin-left: 500px;
+    margin-top: 1.6px;
+    margin-left: 400px;
     display: flex;
     flex-direction: row;
-    gap: 8px;
+    gap: 6.4px;
     align-items: center;
     justify-content: flex-start;
 }
 
 /* Tagline with typing animation */
 .intro-tagline {
-    font-size: 2rem;
+    font-size: 1.6rem;
     color: #ffffff;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6.4px;
     font-weight: 300;
-    margin-left: 12px;
+    margin-left: 9.6px;
 }
 
 .section:not(.active) .intro-tagline {
@@ -292,11 +291,11 @@ body {
 /* Solid block cursor like vim */
 .cursor {
     display: inline-block;
-    width: 12px;
-    height: 2rem;
+    width: 9.6px;
+    height: 1.6rem;
     background-color: #ffffff;
     animation: blink 1s infinite;
-    margin-left: 2px;
+    margin-left: 1.6px;
 }
 
 .section:not(.active) .cursor {
@@ -322,7 +321,7 @@ body {
 }
 
 .aboutme-title {
-    font-size: 3rem;
+    font-size: 2.4rem;
     color: #ffffff;
     font-weight: 600;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -334,14 +333,14 @@ body {
 
 .aboutme-container {
     display: flex;
-    gap: 60px;
-    max-width: 1200px;
+    gap: 48px;
+    max-width: 960px;
     width: 100%;
 }
 
 .aboutme-photo {
-    width: 400px;
-    height: 300px;
+    width: 320px;
+    height: 240px;
     background: none;
     box-shadow: none;
     border-radius: 50%;
@@ -349,22 +348,22 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 30px;
+    padding-top: 24px;
 }
 
 .aboutme-text {
     flex: 1;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: #fff;
-    max-width: 750px;
-    letter-spacing: 1px;
+    max-width: 600px;
+    letter-spacing: 0.8px;
     font-weight: 300;
-    padding-right: 40px;
+    padding-right: 32px;
 }
 
 .aboutme-text p {
-    margin: 0 0 35px 0;
+    margin: 0 0 28px 0;
 }
 
 .aboutme-text p:last-child {
@@ -382,17 +381,17 @@ body {
 .aboutme-text-group {
     display: flex;
     flex-direction: column;
-    margin-top: 15px;
+    margin-top: 12px;
     width: 100%;
 }
 
 .heythere-line {
     display: block;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: #fff;
-    margin-left: -10px;
-    letter-spacing: 1px;
+    margin-left: -8px;
+    letter-spacing: 0.8px;
     font-weight: 300;
 }
 
@@ -411,17 +410,17 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 16px;
     height: 100%;
     overflow-y: auto; /* Allow scrolling if content exceeds viewport */
 }
 
 .projects-title {
-    font-size: 3rem;
+    font-size: 2.4rem;
     color: #ffffff;
     font-weight: 600;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
     text-align: center;
     flex-shrink: 0;
 }
@@ -433,8 +432,8 @@ body {
 .projects-container {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    max-width: 1000px;
+    gap: 9.6px;
+    max-width: 800px;
     width: 100%;
     padding-right: 0;
 }
@@ -443,19 +442,19 @@ body {
 .search-container {
     position: relative;
     width: 100%;
-    max-width: 600px;
-    margin-bottom: 20px;
+    max-width: 480px;
+    margin-bottom: 16px;
 }
 
 .search-input {
     width: 100%;
-    padding: 12px 20px;
-    padding-right: 40px;
-    border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 9.6px 16px;
+    padding-right: 32px;
+    border-radius: 40px;
+    border: 0.8px solid rgba(255, 255, 255, 0.2);
     background: rgba(255, 255, 255, 0.05);
     color: #fff;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-family: inherit;
     outline: none;
     transition: all 0.3s ease;
@@ -479,7 +478,7 @@ body {
 
 .search-icon {
     position: absolute;
-    right: 15px;
+    right: 12px;
     top: 50%;
     transform: translateY(-50%);
     color: rgba(255, 255, 255, 0.5);
@@ -495,15 +494,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
-    margin-top: 20px;
+    gap: 16px;
+    margin-top: 16px;
     width: 100%;
 }
 
 .pagination-btn {
-    padding: 8px 16px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 6.4px 12.8px;
+    border-radius: 16px;
+    border: 0.8px solid rgba(255, 255, 255, 0.2);
     background: rgba(255, 255, 255, 0.05);
     color: #fff;
     cursor: pointer;
@@ -532,7 +531,7 @@ body {
 
 .page-info {
     color: rgba(255, 255, 255, 0.7);
-    font-size: 0.9rem;
+    font-size: 0.72rem;
 }
 
 .section:not(.active) .page-info {
@@ -542,9 +541,9 @@ body {
 /* Loading & No Projects */
 .loading-spinner, .no-projects {
     text-align: center;
-    padding: 40px;
+    padding: 32px;
     color: rgba(255, 255, 255, 0.6);
-    font-size: 1.1rem;
+    font-size: 0.88rem;
 }
 
 .section:not(.active) .loading-spinner,
@@ -554,9 +553,9 @@ body {
 
 /* Language Tag */
 .language-tag {
-    font-size: 0.8rem;
-    padding: 2px 8px;
-    border-radius: 10px;
+    font-size: 0.64rem;
+    padding: 1.6px 6.4px;
+    border-radius: 8px;
     background: rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.8);
 }
@@ -569,11 +568,11 @@ body {
 .project-card {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    padding: 18px 22px;
+    gap: 9.6px;
+    padding: 14.4px 17.6px;
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+    border: 0.8px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
     transition: all 0.3s ease;
     width: 100%;
     flex-shrink: 0;
@@ -583,14 +582,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 20px;
+    gap: 16px;
 }
 
 .project-info {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6.4px;
 }
 
 .section:not(.active) .project-card {
@@ -601,18 +600,18 @@ body {
 .project-card:hover {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 .section:not(.active) .project-card:hover {
     background: rgba(0, 0, 0, 0.05);
     border-color: rgba(0, 0, 0, 0.15);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 .project-name {
-    font-size: 1.3rem;
+    font-size: 1.04rem;
     color: #ffffff;
     font-weight: 600;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -627,10 +626,10 @@ body {
 .project-link {
     display: flex;
     align-items: center;
-    gap: 6px;
-    padding: 8px 12px;
+    gap: 4.8px;
+    padding: 6.4px 9.6px;
     background: rgba(255, 255, 255, 0.08);
-    border-radius: 8px;
+    border-radius: 6.4px;
     text-decoration: none;
     transition: all 0.3s ease;
     flex-shrink: 0;
@@ -642,7 +641,7 @@ body {
 
 .project-link:hover {
     background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-2px);
+    transform: translateY(-1.6px);
 }
 
 .section:not(.active) .project-link:hover {
@@ -650,8 +649,8 @@ body {
 }
 
 .project-icon {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     filter: invert(1) brightness(2);
 }
 
@@ -660,8 +659,8 @@ body {
 }
 
 .project-external {
-    width: 16px;
-    height: 16px;
+    width: 12.8px;
+    height: 12.8px;
     filter: invert(1) brightness(2);
     transition: transform 0.3s ease;
 }
@@ -671,11 +670,11 @@ body {
 }
 
 .project-link:hover .project-external {
-    transform: translate(2px, -2px);
+    transform: translate(1.6px, -1.6px);
 }
 
 .project-description {
-    font-size: 0.95rem;
+    font-size: 0.76rem;
     color: rgba(255, 255, 255, 0.7);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-weight: 300;
@@ -689,7 +688,7 @@ body {
 
 .project-stats {
     display: flex;
-    gap: 20px;
+    gap: 16px;
     align-items: center;
     padding-top: 0;
 }
@@ -697,12 +696,12 @@ body {
 .stat-item {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6.4px;
 }
 
 .stat-icon {
-    width: 16px;
-    height: 16px;
+    width: 12.8px;
+    height: 12.8px;
     color: rgba(255, 255, 255, 0.6);
     stroke: currentColor;
 }
@@ -712,7 +711,7 @@ body {
 }
 
 .stat-value {
-    font-size: 0.95rem;
+    font-size: 0.76rem;
     color: rgba(255, 255, 255, 0.7);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-weight: 400;
@@ -733,15 +732,15 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 16px;
 }
 
 .qualifications-title {
-    font-size: 3rem;
+    font-size: 2.4rem;
     color: #ffffff;
     font-weight: 600;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    margin-bottom: 60px;
+    margin-bottom: 48px;
     text-align: center;
 }
 
@@ -752,15 +751,15 @@ body {
 .qualifications-container {
     display: flex;
     flex-direction: column;
-    gap: 50px;
-    max-width: 1000px;
+    gap: 40px;
+    max-width: 800px;
     width: 100%;
 }
 
 .qualification-item {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 9.6px;
 }
 
 .qualification-header {
@@ -768,11 +767,11 @@ body {
     justify-content: space-between;
     align-items: baseline;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 12px;
 }
 
 .qualification-school {
-    font-size: 2rem;
+    font-size: 1.6rem;
     color: #ffffff;
     font-weight: 600;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -784,7 +783,7 @@ body {
 }
 
 .qualification-period {
-    font-size: 1.2rem;
+    font-size: 0.96rem;
     color: rgba(255, 255, 255, 0.7);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-weight: 300;
@@ -795,7 +794,7 @@ body {
 }
 
 .qualification-degree {
-    font-size: 1.3rem;
+    font-size: 1.04rem;
     color: #ffffff;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-weight: 400;
@@ -812,7 +811,7 @@ body {
 }
 
 .qualification-location {
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: rgba(255, 255, 255, 0.6);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-weight: 300;
@@ -837,15 +836,15 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 16px;
 }
 
 .contacts-title {
-    font-size: 3rem;
+    font-size: 2.4rem;
     color: #ffffff;
     font-weight: 600;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    margin-bottom: 60px;
+    margin-bottom: 48px;
     text-align: center;
 }
 
@@ -857,25 +856,25 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 50px;
-    max-width: 800px;
+    gap: 40px;
+    max-width: 640px;
     width: 100%;
 }
 
 .contact-info {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 24px;
     width: 100%;
 }
 
 .contact-item {
     display: flex;
     align-items: center;
-    gap: 20px;
-    padding: 20px 30px;
+    gap: 16px;
+    padding: 16px 24px;
     background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
+    border-radius: 9.6px;
     transition: all 0.3s ease;
 }
 
@@ -885,7 +884,7 @@ body {
 
 .contact-item:hover {
     background: rgba(255, 255, 255, 0.08);
-    transform: translateY(-2px);
+    transform: translateY(-1.6px);
 }
 
 .section:not(.active) .contact-item:hover {
@@ -893,8 +892,8 @@ body {
 }
 
 .contact-icon {
-    width: 24px;
-    height: 24px;
+    width: 19.2px;
+    height: 19.2px;
     flex-shrink: 0;
     filter: invert(1) brightness(2);
 }
@@ -904,11 +903,11 @@ body {
 }
 
 .contact-label {
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: rgba(255, 255, 255, 0.6);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-weight: 300;
-    min-width: 60px;
+    min-width: 48px;
 }
 
 .section:not(.active) .contact-label {
@@ -916,7 +915,7 @@ body {
 }
 
 .contact-value {
-    font-size: 1.2rem;
+    font-size: 0.96rem;
     color: #ffffff;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-weight: 400;
@@ -934,15 +933,15 @@ body {
 
 .contact-social {
     display: flex;
-    gap: 25px;
+    gap: 20px;
     justify-content: center;
     align-items: center;
-    padding: 20px 0;
+    padding: 16px 0;
 }
 
 .social-link {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -957,7 +956,7 @@ body {
 
 .social-link:hover {
     background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-3px);
+    transform: translateY(-2.4px);
 }
 
 .section:not(.active) .social-link:hover {
@@ -965,8 +964,8 @@ body {
 }
 
 .social-icon {
-    width: 24px;
-    height: 24px;
+    width: 19.2px;
+    height: 19.2px;
     filter: invert(1) brightness(2);
 }
 
@@ -977,18 +976,18 @@ body {
 .resume-button {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 18px 36px;
+    gap: 9.6px;
+    padding: 14.4px 28.8px;
     background: rgba(255, 255, 255, 0.08);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50px;
+    border: 1.6px solid rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
     color: #ffffff;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    font-size: 1.1rem;
+    font-size: 0.88rem;
     font-weight: 500;
     text-decoration: none;
     transition: all 0.3s ease;
-    margin-top: 10px;
+    margin-top: 8px;
 }
 
 .section:not(.active) .resume-button {
@@ -1000,19 +999,19 @@ body {
 .resume-button:hover {
     background: rgba(255, 255, 255, 0.12);
     border-color: rgba(255, 255, 255, 0.3);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1.6px);
+    box-shadow: 0 6.4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .section:not(.active) .resume-button:hover {
     background: rgba(0, 0, 0, 0.08);
     border-color: rgba(0, 0, 0, 0.25);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 6.4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .resume-icon {
-    width: 22px;
-    height: 22px;
+    width: 17.6px;
+    height: 17.6px;
     filter: invert(1) brightness(2);
 }
 
@@ -1021,8 +1020,8 @@ body {
 }
 
 .resume-arrow {
-    width: 18px;
-    height: 18px;
+    width: 14.4px;
+    height: 14.4px;
     filter: invert(1) brightness(2);
     transition: transform 0.3s ease;
 }
@@ -1032,7 +1031,7 @@ body {
 }
 
 .resume-button:hover .resume-arrow {
-    transform: translate(2px, -2px);
+    transform: translate(1.6px, -1.6px);
 }
 
 
@@ -1040,41 +1039,41 @@ body {
 @media (max-width: 968px) {
     .intro-content {
         flex-direction: column;
-        gap: 40px;
+        gap: 32px;
     }
 
     .intro-name {
-        font-size: 3.5rem;
-        padding-bottom: 5px;
+        font-size: 2.8rem;
+        padding-bottom: 4px;
     }
 
     .aboutme-text-group {
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
     .intro-text-group {
-        padding-left: 20px;
+        padding-left: 16px;
     }
 
     .intro-photo {
-        width: 280px;
-        height: 280px;
+        width: 224px;
+        height: 224px;
     }
 
     .intro-icons {
-        margin-left: 330px;
+        margin-left: 264px;
     }
 
     .intro-tagline {
-        margin-left: 12px;
+        margin-left: 9.6px;
     }
 
     .aboutme-container {
         flex-direction: column;
         align-items: center;
-        margin-left: 180px;
-        margin-right: 10px;
+        margin-left: 144px;
+        margin-right: 8px;
     }
 
     .aboutme-photo {
@@ -1083,127 +1082,127 @@ body {
 
 
     .aboutme-text {
-        font-size: 1.4rem;
+        font-size: 1.12rem;
         line-height: 2;
     }
 
     .aboutme-title {
-        font-size: 2.8rem;
-        margin-bottom: 50px;
+        font-size: 2.24rem;
+        margin-bottom: 40px;
         margin-top: 0;
     }
 
     .projects-content {
-        padding: 0 40px;
+        padding: 0 32px;
     }
 
     .projects-title {
-        font-size: 2.8rem;
-        margin-bottom: 25px;
+        font-size: 2.24rem;
+        margin-bottom: 20px;
     }
 
     .projects-container {
-        gap: 10px;
-        max-height: calc(100vh - 160px);
+        gap: 8px;
+        max-height: calc(100vh - 128px);
     }
 
     .project-card {
-        padding: 16px 20px;
+        padding: 12.8px 16px;
     }
 
     .project-name {
-        font-size: 1.2rem;
+        font-size: 0.96rem;
     }
 
     .project-description {
-        font-size: 0.9rem;
+        font-size: 0.72rem;
     }
 
     .stat-icon {
-        width: 15px;
-        height: 15px;
+        width: 12px;
+        height: 12px;
     }
 
     .stat-value {
-        font-size: 0.9rem;
+        font-size: 0.72rem;
     }
 
     .qualifications-content {
-        padding: 0 40px;
+        padding: 0 32px;
     }
 
     .qualifications-title {
-        font-size: 2.8rem;
-        margin-bottom: 50px;
+        font-size: 2.24rem;
+        margin-bottom: 40px;
     }
 
     .qualification-school {
-        font-size: 1.8rem;
+        font-size: 1.44rem;
     }
 
     .qualification-period {
-        font-size: 1.1rem;
+        font-size: 0.88rem;
     }
 
     .qualification-degree {
-        font-size: 1.2rem;
+        font-size: 0.96rem;
     }
 
     .contacts-content {
-        padding: 0 40px;
+        padding: 0 32px;
     }
 
     .contacts-title {
-        font-size: 2.8rem;
-        margin-bottom: 50px;
+        font-size: 2.24rem;
+        margin-bottom: 40px;
     }
 
     .contact-item {
-        padding: 18px 25px;
+        padding: 14.4px 20px;
     }
 
     .contact-value {
-        font-size: 1.1rem;
+        font-size: 0.88rem;
     }
 }
 
 @media (max-width: 790px) {
     .intro-content {
-        gap: 30px;
+        gap: 24px;
     }
 
     .intro-photo {
-        width: 220px;
-        height: 220px;
+        width: 176px;
+        height: 176px;
     }
 
     .intro-name {
-        font-size: 3rem;
+        font-size: 2.4rem;
     }
 
     .intro-tagline {
-        font-size: 1.5rem;
-        gap: 6px;
-        margin-left: 12px;
+        font-size: 1.2rem;
+        gap: 4.8px;
+        margin-left: 9.6px;
     }
 
     .cursor {
-        width: 10px;
-        height: 1.5rem;
+        width: 8px;
+        height: 1.2rem;
     }
 
     .intro-icons {
-        margin-left: 260px;
+        margin-left: 208px;
     }
 
     .dot-nav {
         top: auto;
-        bottom: 20px;
+        bottom: 16px;
         right: 50%;
         left: 50%;
         transform: translate(-50%, 0);
         flex-direction: row;
-        gap: 30px;
+        gap: 24px;
         justify-content: center;
         align-items: center;
         width: auto;
@@ -1214,15 +1213,15 @@ body {
         top: 50%;
         left: 100%;
         transform: translateY(-50%);
-        width: 30px;
-        height: 2px;
+        width: 24px;
+        height: 1.6px;
     }
 
     .aboutme-container {
         flex-direction: column;
         align-items: center;
-        margin-left: 40px;
-        padding-left: 40px;
+        margin-left: 32px;
+        padding-left: 32px;
     }
 
     .aboutme-photo {
@@ -1231,161 +1230,161 @@ body {
 
 
     .aboutme-text {
-        font-size: 1.3rem;
+        font-size: 1.04rem;
         line-height: 2;
     }
 
     .aboutme-title {
-        font-size: 2.3rem;
-        margin-bottom: 50px;
+        font-size: 1.84rem;
+        margin-bottom: 40px;
         margin-top: 0;
     }
 
     .projects-content {
-        padding: 0 30px;
+        padding: 0 24px;
     }
 
     .projects-title {
-        font-size: 2.3rem;
-        margin-bottom: 20px;
+        font-size: 1.84rem;
+        margin-bottom: 16px;
     }
 
     .projects-container {
-        max-height: calc(100vh - 140px);
+        max-height: calc(100vh - 112px);
     }
 
     .project-card {
-        padding: 15px 18px;
+        padding: 12px 14.4px;
     }
 
     .project-name {
-        font-size: 1.15rem;
+        font-size: 0.92rem;
     }
 
     .project-description {
-        font-size: 0.85rem;
+        font-size: 0.68rem;
     }
 
     .project-stats {
-        gap: 20px;
+        gap: 16px;
     }
 
     .stat-icon {
-        width: 14px;
-        height: 14px;
+        width: 11.2px;
+        height: 11.2px;
     }
 
     .stat-value {
-        font-size: 0.85rem;
+        font-size: 0.68rem;
     }
 
     .qualifications-content {
-        padding: 0 30px;
+        padding: 0 24px;
     }
 
     .qualifications-title {
-        font-size: 2.3rem;
-        margin-bottom: 40px;
+        font-size: 1.84rem;
+        margin-bottom: 32px;
     }
 
     .qualifications-container {
-        gap: 40px;
+        gap: 32px;
     }
 
     .qualification-school {
-        font-size: 1.6rem;
+        font-size: 1.28rem;
     }
 
     .qualification-period {
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
 
     .qualification-degree {
-        font-size: 1.1rem;
+        font-size: 0.88rem;
     }
 
     .qualification-location {
-        font-size: 0.95rem;
+        font-size: 0.76rem;
     }
 
     .contacts-content {
-        padding: 0 30px;
+        padding: 0 24px;
     }
 
     .contacts-title {
-        font-size: 2.3rem;
-        margin-bottom: 40px;
+        font-size: 1.84rem;
+        margin-bottom: 32px;
     }
 
     .contact-item {
-        padding: 16px 20px;
-        gap: 15px;
+        padding: 12.8px 16px;
+        gap: 12px;
     }
 
     .contact-label {
-        min-width: 50px;
-        font-size: 0.95rem;
+        min-width: 40px;
+        font-size: 0.76rem;
     }
 
     .contact-value {
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
 
     .social-link {
-        width: 45px;
-        height: 45px;
+        width: 36px;
+        height: 36px;
     }
 
     .social-icon {
-        width: 22px;
-        height: 22px;
+        width: 17.6px;
+        height: 17.6px;
     }
 
     .resume-button {
-        padding: 16px 32px;
-        font-size: 1rem;
+        padding: 12.8px 25.6px;
+        font-size: 0.8rem;
     }
 }
 
 @media (max-width: 480px) {
     .intro-content {
-        gap: 25px;
+        gap: 20px;
     }
 
     .intro-photo {
-        width: 180px;
-        height: 180px;
+        width: 144px;
+        height: 144px;
     }
 
     .intro-name {
-        font-size: 2.5rem;
-        letter-spacing: 1px;
+        font-size: 2rem;
+        letter-spacing: 0.8px;
     }
 
     .intro-tagline {
-        font-size: 1.2rem;
-        margin-left: 12px;
+        font-size: 0.96rem;
+        margin-left: 9.6px;
     }
 
     .cursor {
-        width: 8px;
-        height: 1.2rem;
+        width: 6.4px;
+        height: 0.96rem;
     }
 
     .intro-icons {
-        margin-top: 2px;
-        margin-left: 180px;
-        gap: 10px;
+        margin-top: 1.6px;
+        margin-left: 144px;
+        gap: 8px;
     }
 
     .icon-svg {
-        width: 20px;
-        height: 20px;
+        width: 16px;
+        height: 16px;
     }
 
 
     .aboutme-title {
-        font-size: 2rem;
+        font-size: 1.6rem;
         margin-top: 0;
     }
 
@@ -1401,39 +1400,39 @@ body {
 
     .aboutme-text-group {
         width: 100%;
-        max-width: 300px;
+        max-width: 240px;
     }
 
     .aboutme-text {
-        font-size: 1rem;
+        font-size: 0.8rem;
         line-height: 1.9;
     }
 
     .heythere-line {
-        margin-left: -10px;
+        margin-left: -8px;
     }
 
     .projects-content {
-        padding: 0 20px;
+        padding: 0 16px;
     }
 
     .projects-title {
-        font-size: 2rem;
-        margin-bottom: 15px;
+        font-size: 1.6rem;
+        margin-bottom: 12px;
     }
 
     .projects-container {
-        gap: 10px;
-        max-height: calc(100vh - 120px);
+        gap: 8px;
+        max-height: calc(100vh - 96px);
     }
 
     .project-card {
-        padding: 14px 16px;
+        padding: 11.2px 12.8px;
     }
 
     .project-main {
         flex-direction: column;
-        gap: 12px;
+        gap: 9.6px;
     }
 
     .project-link {
@@ -1441,115 +1440,115 @@ body {
     }
 
     .project-name {
-        font-size: 1.1rem;
+        font-size: 0.88rem;
     }
 
     .project-description {
-        font-size: 0.85rem;
+        font-size: 0.68rem;
         line-height: 1.4;
     }
 
     .project-stats {
-        gap: 18px;
+        gap: 14.4px;
         flex-wrap: wrap;
     }
 
     .stat-icon {
-        width: 13px;
-        height: 13px;
+        width: 10.4px;
+        height: 10.4px;
     }
 
     .stat-value {
-        font-size: 0.8rem;
+        font-size: 0.64rem;
     }
 
     .qualifications-content {
-        padding: 0 20px;
+        padding: 0 16px;
     }
 
     .qualifications-title {
-        font-size: 2rem;
-        margin-bottom: 30px;
+        font-size: 1.6rem;
+        margin-bottom: 24px;
     }
 
     .qualifications-container {
-        gap: 35px;
+        gap: 28px;
     }
 
     .qualification-header {
         flex-direction: column;
-        gap: 8px;
+        gap: 6.4px;
         align-items: flex-start;
     }
 
     .qualification-school {
-        font-size: 1.4rem;
+        font-size: 1.12rem;
     }
 
     .qualification-period {
-        font-size: 0.95rem;
+        font-size: 0.76rem;
     }
 
     .qualification-degree {
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
 
     .qualification-location {
-        font-size: 0.85rem;
+        font-size: 0.68rem;
         line-height: 1.5;
     }
 
     .contacts-content {
-        padding: 0 20px;
+        padding: 0 16px;
     }
 
     .contacts-title {
-        font-size: 2rem;
-        margin-bottom: 30px;
+        font-size: 1.6rem;
+        margin-bottom: 24px;
     }
 
     .contacts-container {
-        gap: 35px;
+        gap: 28px;
     }
 
     .contact-info {
-        gap: 20px;
+        gap: 16px;
     }
 
     .contact-item {
         flex-direction: column;
         align-items: flex-start;
-        padding: 16px 20px;
-        gap: 10px;
+        padding: 12.8px 16px;
+        gap: 8px;
     }
 
     .contact-label {
-        font-size: 0.85rem;
+        font-size: 0.68rem;
     }
 
     .contact-value {
-        font-size: 0.95rem;
+        font-size: 0.76rem;
         word-break: break-word;
     }
 
     .contact-social {
-        gap: 20px;
+        gap: 16px;
         flex-wrap: wrap;
     }
 
     .social-link {
-        width: 42px;
-        height: 42px;
+        width: 33.6px;
+        height: 33.6px;
     }
 
     .social-icon {
-        width: 20px;
-        height: 20px;
+        width: 16px;
+        height: 16px;
     }
 
     .resume-button {
-        padding: 14px 28px;
-        font-size: 0.95rem;
+        padding: 11.2px 22.4px;
+        font-size: 0.76rem;
         width: 100%;
         justify-content: center;
     }
@@ -1588,8 +1587,8 @@ body {
     z-index: 2;
     max-width: 90vw;
     max-height: 90vh;
-    border-radius: 24px;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.7);
+    border-radius: 19.2px;
+    box-shadow: 0 6.4px 32px rgba(0,0,0,0.7);
     animation: fadeIn 0.7s;
 }
 
@@ -1607,17 +1606,17 @@ body {
     display: none;
     position: absolute;
     left: 50%;
-    top: -36px;
+    top: -28.8px;
     transform: translateX(-50%);
     background: #fff;
     color: #222;
-    padding: 6px 12px;
-    border-radius: 16px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding: 4.8px 9.6px;
+    border-radius: 12.8px;
+    box-shadow: 0 1.6px 6.4px rgba(0,0,0,0.08);
     white-space: nowrap;
     z-index: 10;
     font-family: inherit;
-    font-size: 1rem;
+    font-size: 0.8rem;
     /* font-weight: 600; */
     opacity: 0;
     pointer-events: none;
