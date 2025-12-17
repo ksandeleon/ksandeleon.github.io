@@ -38,7 +38,7 @@ body {
     position: relative;
     z-index: 10;
     width: 100%;
-    height: 100%;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -179,8 +179,8 @@ body {
 
 /* Profile photo */
 .intro-photo {
-    width: 384px;
-    height: 384px;
+    width: clamp(144px, calc(144px + 240 * (100vw - 20rem) / 70), 384px);
+    height: clamp(144px, calc(144px + 240 * (100vw - 20rem) / 70), 384px);
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
@@ -220,6 +220,7 @@ body {
     color: #f5f5f5;
     margin: 0;
     letter-spacing: 2.4px;
+    white-space: nowrap;
 }
 
 /* Color adaptation for name on white background */
@@ -1070,6 +1071,7 @@ body {
         padding-bottom: 4px;
     }
 
+
     .aboutme-text-group {
         padding-left: 16px;
         padding-right: 16px;
@@ -1080,8 +1082,8 @@ body {
     }
 
     .intro-photo {
-        width: 224px;
-        height: 224px;
+        width: clamp(224px, 30vw, 280px);
+        height: clamp(224px, 30vw, 280px);
     }
 
     .intro-tagline {
@@ -1157,14 +1159,13 @@ body {
         gap: 24px;
     }
 
-    .intro-photo {
-        width: 176px;
-        height: 176px;
-    }
-
     .intro-tagline {
         gap: 4.8px;
         margin-left: 9.6px;
+    }
+
+    .intro-name {
+        letter-spacing: 0.8px;
     }
 
     .cursor {
@@ -1287,15 +1288,6 @@ body {
 @media (max-width: 480px) {
     .intro-content {
         gap: 20px;
-    }
-
-    .intro-photo {
-        width: 144px;
-        height: 144px;
-    }
-
-    .intro-name {
-        letter-spacing: 0.8px;
     }
 
     .intro-tagline {
