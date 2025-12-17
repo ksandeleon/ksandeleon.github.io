@@ -208,7 +208,7 @@ body {
 
 /* Name styling */
 .intro-name {
-    font-size: 4rem;
+    font-size: clamp(3rem, calc(3rem + 1 * (100vw - 20rem) / 70), 4rem);
     font-weight: 800;
     color: #f5f5f5;
     margin: 0;
@@ -256,7 +256,7 @@ body {
 
 /* Tagline with typing animation */
 .intro-tagline {
-    font-size: 1.6rem;
+    font-size: clamp(1.2rem, calc(1.2rem + 0.4 * (100vw - 20rem) / 70), 1.6rem);
     color: #f5f5f5;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     display: flex;
@@ -321,7 +321,7 @@ body {
 }
 
 .aboutme-title {
-    font-size: 2.4rem;
+    font-size: clamp(1.8rem, calc(1.8rem + 0.6 * (100vw - 20rem) / 70), 2.4rem);
     color: #f5f5f5;
     font-weight: 600;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -354,7 +354,7 @@ body {
 .aboutme-text {
     flex: 1;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    font-size: 1.2rem;
+    font-size: clamp(0.9rem, calc(0.9rem + 0.3 * (100vw - 20rem) / 70), 1.2rem);
     color: #f5f5f5;
     max-width: 600px;
     letter-spacing: 0.8px;
@@ -389,7 +389,7 @@ body {
 .heythere-line {
     display: block;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    font-size: 0.8rem;
+    font-size: clamp(0.6rem, calc(0.6rem + 0.2 * (100vw - 20rem) / 70), 0.8rem);
     color: #f5f5f5;
     margin-left: -8px;
     letter-spacing: 0.8px;
@@ -433,7 +433,7 @@ body {
 }
 
 .projects-title {
-    font-size: 2.4rem;
+    font-size: clamp(1.8rem, calc(1.8rem + 0.6 * (100vw - 20rem) / 70), 2.4rem);
     color: #f5f5f5;
     font-weight: 600;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -471,7 +471,7 @@ body {
     border: 0.8px solid rgba(255, 255, 255, 0.2);
     background: rgba(255, 255, 255, 0.05);
     color: #f5f5f5;
-    font-size: 0.8rem;
+    font-size: clamp(0.6rem, calc(0.6rem + 0.2 * (100vw - 20rem) / 70), 0.8rem);
     font-family: inherit;
     outline: none;
     transition: all 0.3s ease;
@@ -548,7 +548,7 @@ body {
 
 .page-info {
     color: rgba(255, 255, 255, 0.7);
-    font-size: 0.72rem;
+    font-size: clamp(0.54rem, calc(0.54rem + 0.18 * (100vw - 20rem) / 70), 0.72rem);
 }
 
 .section:not(.active) .page-info {
@@ -560,7 +560,7 @@ body {
     text-align: center;
     padding: 32px;
     color: rgba(255, 255, 255, 0.6);
-    font-size: 0.88rem;
+    font-size: clamp(0.66rem, calc(0.66rem + 0.22 * (100vw - 20rem) / 70), 0.88rem);
 }
 
 .section:not(.active) .loading-spinner,
@@ -570,7 +570,7 @@ body {
 
 /* Language Tag */
 .language-tag {
-    font-size: 0.64rem;
+    font-size: clamp(0.48rem, calc(0.48rem + 0.16 * (100vw - 20rem) / 70), 0.64rem);
     padding: 1.6px 6.4px;
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.1);
@@ -628,7 +628,7 @@ body {
 }
 
 .project-name {
-    font-size: 1.04rem;
+    font-size: clamp(0.78rem, calc(0.78rem + 0.26 * (100vw - 20rem) / 70), 1.04rem);
     color: #f5f5f5;
     font-weight: 600;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -691,7 +691,7 @@ body {
 }
 
 .project-description {
-    font-size: 0.76rem;
+    font-size: clamp(0.57rem, calc(0.57rem + 0.19 * (100vw - 20rem) / 70), 0.76rem);
     color: rgba(255, 255, 255, 0.7);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-weight: 300;
@@ -728,7 +728,7 @@ body {
 }
 
 .stat-value {
-    font-size: 0.76rem;
+    font-size: clamp(0.57rem, calc(0.57rem + 0.19 * (100vw - 20rem) / 70), 0.76rem);
     color: rgba(255, 255, 255, 0.7);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-weight: 400;
@@ -753,7 +753,7 @@ body {
 }
 
 .qualifications-title {
-    font-size: 2.4rem;
+    font-size: clamp(1.8rem, calc(1.8rem + 0.6 * (100vw - 20rem) / 70), 2.4rem);
     color: #f5f5f5;
     font-weight: 600;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -788,7 +788,7 @@ body {
 }
 
 .qualification-school {
-    font-size: 1.6rem;
+    font-size: clamp(1.2rem, calc(1.2rem + 0.4 * (100vw - 20rem) / 70), 1.6rem);
     color: #f5f5f5;
     font-weight: 600;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -800,7 +800,7 @@ body {
 }
 
 .qualification-period {
-    font-size: 0.96rem;
+    font-size: clamp(0.72rem, calc(0.72rem + 0.24 * (100vw - 20rem) / 70), 0.96rem);
     color: rgba(255, 255, 255, 0.7);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-weight: 300;
@@ -811,7 +811,7 @@ body {
 }
 
 .qualification-degree {
-    font-size: 1.04rem;
+    font-size: clamp(0.78rem, calc(0.78rem + 0.26 * (100vw - 20rem) / 70), 1.04rem);
     color: #f5f5f5;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-weight: 400;
@@ -828,7 +828,7 @@ body {
 }
 
 .qualification-location {
-    font-size: 0.8rem;
+    font-size: clamp(0.6rem, calc(0.6rem + 0.2 * (100vw - 20rem) / 70), 0.8rem);
     color: rgba(255, 255, 255, 0.6);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-weight: 300;
@@ -857,7 +857,7 @@ body {
 }
 
 .contacts-title {
-    font-size: 2.4rem;
+    font-size: clamp(1.8rem, calc(1.8rem + 0.6 * (100vw - 20rem) / 70), 2.4rem);
     color: #f5f5f5;
     font-weight: 600;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -920,7 +920,7 @@ body {
 }
 
 .contact-label {
-    font-size: 0.8rem;
+    font-size: clamp(0.6rem, calc(0.6rem + 0.2 * (100vw - 20rem) / 70), 0.8rem);
     color: rgba(255, 255, 255, 0.6);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-weight: 300;
@@ -932,7 +932,7 @@ body {
 }
 
 .contact-value {
-    font-size: 0.96rem;
+    font-size: clamp(0.72rem, calc(0.72rem + 0.24 * (100vw - 20rem) / 70), 0.96rem);
     color: #f5f5f5;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-weight: 400;
@@ -1000,7 +1000,7 @@ body {
     border-radius: 40px;
     color: #f5f5f5;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    font-size: 0.88rem;
+    font-size: clamp(0.66rem, calc(0.66rem + 0.22 * (100vw - 20rem) / 70), 0.88rem);
     font-weight: 500;
     text-decoration: none;
     transition: all 0.3s ease;
@@ -1060,7 +1060,6 @@ body {
     }
 
     .intro-name {
-        font-size: 2.8rem;
         padding-bottom: 4px;
     }
 
@@ -1099,12 +1098,10 @@ body {
 
 
     .aboutme-text {
-        font-size: 1.12rem;
         line-height: 2;
     }
 
     .aboutme-title {
-        font-size: 2.24rem;
         margin-bottom: 40px;
         margin-top: 0;
     }
@@ -1114,7 +1111,6 @@ body {
     }
 
     .projects-title {
-        font-size: 2.24rem;
         margin-bottom: 20px;
     }
 
@@ -1127,21 +1123,9 @@ body {
         padding: 12.8px 16px;
     }
 
-    .project-name {
-        font-size: 0.96rem;
-    }
-
-    .project-description {
-        font-size: 0.72rem;
-    }
-
     .stat-icon {
         width: 12px;
         height: 12px;
-    }
-
-    .stat-value {
-        font-size: 0.72rem;
     }
 
     .qualifications-content {
@@ -1149,20 +1133,7 @@ body {
     }
 
     .qualifications-title {
-        font-size: 2.24rem;
         margin-bottom: 40px;
-    }
-
-    .qualification-school {
-        font-size: 1.44rem;
-    }
-
-    .qualification-period {
-        font-size: 0.88rem;
-    }
-
-    .qualification-degree {
-        font-size: 0.96rem;
     }
 
     .contacts-content {
@@ -1170,16 +1141,11 @@ body {
     }
 
     .contacts-title {
-        font-size: 2.24rem;
         margin-bottom: 40px;
     }
 
     .contact-item {
         padding: 14.4px 20px;
-    }
-
-    .contact-value {
-        font-size: 0.88rem;
     }
 }
 
@@ -1193,12 +1159,7 @@ body {
         height: 176px;
     }
 
-    .intro-name {
-        font-size: 2.4rem;
-    }
-
     .intro-tagline {
-        font-size: 1.2rem;
         gap: 4.8px;
         margin-left: 9.6px;
     }
@@ -1247,12 +1208,10 @@ body {
 
 
     .aboutme-text {
-        font-size: 1.04rem;
         line-height: 2;
     }
 
     .aboutme-title {
-        font-size: 1.84rem;
         margin-bottom: 40px;
         margin-top: 0;
     }
@@ -1262,7 +1221,6 @@ body {
     }
 
     .projects-title {
-        font-size: 1.84rem;
         margin-bottom: 16px;
     }
 
@@ -1274,14 +1232,6 @@ body {
         padding: 12px 14.4px;
     }
 
-    .project-name {
-        font-size: 0.92rem;
-    }
-
-    .project-description {
-        font-size: 0.68rem;
-    }
-
     .project-stats {
         gap: 16px;
     }
@@ -1291,16 +1241,11 @@ body {
         height: 11.2px;
     }
 
-    .stat-value {
-        font-size: 0.68rem;
-    }
-
     .qualifications-content {
         padding: 0 24px;
     }
 
     .qualifications-title {
-        font-size: 1.84rem;
         margin-bottom: 32px;
     }
 
@@ -1308,28 +1253,11 @@ body {
         gap: 32px;
     }
 
-    .qualification-school {
-        font-size: 1.28rem;
-    }
-
-    .qualification-period {
-        font-size: 0.8rem;
-    }
-
-    .qualification-degree {
-        font-size: 0.88rem;
-    }
-
-    .qualification-location {
-        font-size: 0.76rem;
-    }
-
     .contacts-content {
         padding: 0 24px;
     }
 
     .contacts-title {
-        font-size: 1.84rem;
         margin-bottom: 32px;
     }
 
@@ -1340,11 +1268,6 @@ body {
 
     .contact-label {
         min-width: 40px;
-        font-size: 0.76rem;
-    }
-
-    .contact-value {
-        font-size: 0.8rem;
     }
 
     .social-link {
@@ -1359,7 +1282,6 @@ body {
 
     .resume-button {
         padding: 12.8px 25.6px;
-        font-size: 0.8rem;
     }
 }
 
@@ -1374,12 +1296,10 @@ body {
     }
 
     .intro-name {
-        font-size: 2rem;
         letter-spacing: 0.8px;
     }
 
     .intro-tagline {
-        font-size: 0.96rem;
         margin-left: 9.6px;
     }
 
@@ -1401,7 +1321,6 @@ body {
 
 
     .aboutme-title {
-        font-size: 1.6rem;
         margin-top: 0;
     }
 
@@ -1421,7 +1340,6 @@ body {
     }
 
     .aboutme-text {
-        font-size: 0.8rem;
         line-height: 1.9;
     }
 
@@ -1434,7 +1352,6 @@ body {
     }
 
     .projects-title {
-        font-size: 1.6rem;
         margin-bottom: 12px;
     }
 
@@ -1456,12 +1373,7 @@ body {
         align-self: flex-end;
     }
 
-    .project-name {
-        font-size: 0.88rem;
-    }
-
     .project-description {
-        font-size: 0.68rem;
         line-height: 1.4;
     }
 
@@ -1475,16 +1387,11 @@ body {
         height: 10.4px;
     }
 
-    .stat-value {
-        font-size: 0.64rem;
-    }
-
     .qualifications-content {
         padding: 0 16px;
     }
 
     .qualifications-title {
-        font-size: 1.6rem;
         margin-bottom: 24px;
     }
 
@@ -1498,20 +1405,7 @@ body {
         align-items: flex-start;
     }
 
-    .qualification-school {
-        font-size: 1.12rem;
-    }
-
-    .qualification-period {
-        font-size: 0.76rem;
-    }
-
-    .qualification-degree {
-        font-size: 0.8rem;
-    }
-
     .qualification-location {
-        font-size: 0.68rem;
         line-height: 1.5;
     }
 
@@ -1520,7 +1414,6 @@ body {
     }
 
     .contacts-title {
-        font-size: 1.6rem;
         margin-bottom: 24px;
     }
 
@@ -1539,12 +1432,7 @@ body {
         gap: 8px;
     }
 
-    .contact-label {
-        font-size: 0.68rem;
-    }
-
     .contact-value {
-        font-size: 0.76rem;
         word-break: break-word;
     }
 
@@ -1565,7 +1453,6 @@ body {
 
     .resume-button {
         padding: 11.2px 22.4px;
-        font-size: 0.76rem;
         width: 100%;
         justify-content: center;
     }
@@ -1633,7 +1520,7 @@ body {
     white-space: nowrap;
     z-index: 10;
     font-family: inherit;
-    font-size: 0.8rem;
+    font-size: clamp(0.6rem, calc(0.6rem + 0.2 * (100vw - 20rem) / 70), 0.8rem);
     /* font-weight: 600; */
     opacity: 0;
     pointer-events: none;
