@@ -175,14 +175,13 @@ body {
     align-items: center;
     justify-content: center;
     gap: 48px;
-    padding: 0 20px;
     max-width: 100%;
 }
 
 /* Profile photo */
 .intro-photo {
-    width: clamp(144px, calc(144px + 240 * (100vw - 20rem) / 70), 384px);
-    height: clamp(144px, calc(144px + 240 * (100vw - 20rem) / 70), 384px);
+    width: clamp(0px, calc(144px + 240 * (100vw - 20rem) / 70), 384px);
+    height: clamp(0px, calc(144px + 240 * (100vw - 20rem) / 70), 384px);
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
@@ -1289,7 +1288,6 @@ body {
 @media (max-width: 480px) {
     .intro-content {
         gap: 20px;
-        padding: 0 16px;
     }
 
     .intro-name {
