@@ -206,6 +206,13 @@ body {
     gap: 16px;
 }
 
+/* Text group wrapper - shrink-wraps to name width */
+.intro-text-group {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
 /* Name styling */
 .intro-name {
     font-size: clamp(3rem, calc(3rem + 1 * (100vw - 20rem) / 70), 4rem);
@@ -245,13 +252,13 @@ body {
 }
 
 .intro-icons {
-    margin-top: 1.6px;
-    margin-left: 400px;
+    margin-top: 8px;
     display: flex;
     flex-direction: row;
     gap: 6.4px;
     align-items: center;
     justify-content: flex-start;
+    align-self: flex-end;
 }
 
 /* Tagline with typing animation */
@@ -1077,10 +1084,6 @@ body {
         height: 224px;
     }
 
-    .intro-icons {
-        margin-left: 264px;
-    }
-
     .intro-tagline {
         margin-left: 9.6px;
     }
@@ -1167,10 +1170,6 @@ body {
     .cursor {
         width: 8px;
         height: 1.2rem;
-    }
-
-    .intro-icons {
-        margin-left: 208px;
     }
 
     .dot-nav {
@@ -1306,12 +1305,6 @@ body {
     .cursor {
         width: 6.4px;
         height: 0.96rem;
-    }
-
-    .intro-icons {
-        margin-top: 1.6px;
-        margin-left: 144px;
-        gap: 8px;
     }
 
     .icon-svg {
