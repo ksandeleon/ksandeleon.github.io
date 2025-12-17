@@ -180,8 +180,8 @@ body {
 
 /* Profile photo */
 .intro-photo {
-    width: clamp(0px, calc(144px + 240 * (100vw - 20rem) / 70), 384px);
-    height: clamp(0px, calc(144px + 240 * (100vw - 20rem) / 70), 384px);
+    width: clamp(150px, 40vw, 384px);
+    height: clamp(150px, 40vw, 384px);
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
@@ -216,11 +216,13 @@ body {
 
 /* Name styling */
 .intro-name {
-    font-size: clamp(3rem, calc(3rem + 1 * (100vw - 20rem) / 70), 4rem);
+    font-size: clamp(1.4rem, 8vw, 4rem);
     font-weight: 800;
     color: #f5f5f5;
     margin: 0;
     letter-spacing: 2.4px;
+    white-space: nowrap;
+    width: auto;
 }
 
 /* Color adaptation for name on white background */
@@ -1077,15 +1079,6 @@ body {
         padding-right: 16px;
     }
 
-    .intro-text-group {
-        padding-left: 16px;
-    }
-
-    .intro-photo {
-        width: clamp(224px, 30vw, 280px);
-        height: clamp(224px, 30vw, 280px);
-    }
-
     .intro-tagline {
         margin-left: 9.6px;
     }
@@ -1151,6 +1144,68 @@ body {
 
     .contact-item {
         padding: 14.4px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .intro-content {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .intro-text-group {
+        align-items: center;
+        text-align: center;
+    }
+
+    .intro-text {
+        align-items: center;
+        text-align: center;
+    }
+
+    .intro-icons {
+        align-self: center;
+    }
+
+    .intro-tagline {
+        gap: 4.8px;
+        margin-left: 0;
+        justify-content: center;
+    }
+
+    .intro-name {
+        letter-spacing: 0.8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .intro-content {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .intro-text-group {
+        align-items: center;
+        text-align: center;
+    }
+
+    .intro-text {
+        align-items: center;
+        text-align: center;
+    }
+
+    .intro-icons {
+        align-self: center;
+    }
+
+    .intro-tagline {
+        gap: 4.8px;
+        margin-left: 0;
+        justify-content: center;
+    }
+
+    .intro-name {
+        letter-spacing: 0.8px;
     }
 }
 
@@ -1292,16 +1347,11 @@ body {
 
     .intro-name {
         letter-spacing: 0.8px;
-        text-align: center;
-    }
-
-    .intro-text-group {
-        width: 100%;
-        align-items: center;
     }
 
     .intro-tagline {
-        margin-left: 9.6px;
+        margin-left: 0;
+        gap: 3.2px;
     }
 
     .cursor {
