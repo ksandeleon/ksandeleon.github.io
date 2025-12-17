@@ -175,6 +175,8 @@ body {
     align-items: center;
     justify-content: center;
     gap: 48px;
+    padding: 0 20px;
+    max-width: 100%;
 }
 
 /* Profile photo */
@@ -220,7 +222,6 @@ body {
     color: #f5f5f5;
     margin: 0;
     letter-spacing: 2.4px;
-    white-space: nowrap;
 }
 
 /* Color adaptation for name on white background */
@@ -1288,6 +1289,17 @@ body {
 @media (max-width: 480px) {
     .intro-content {
         gap: 20px;
+        padding: 0 16px;
+    }
+
+    .intro-name {
+        letter-spacing: 0.8px;
+        text-align: center;
+    }
+
+    .intro-text-group {
+        width: 100%;
+        align-items: center;
     }
 
     .intro-tagline {
