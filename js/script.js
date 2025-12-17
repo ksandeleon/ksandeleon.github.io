@@ -6,7 +6,7 @@ const words = [
     'Low Level Programming',
     'Deep Learning',
     'Web Development',
-    'Mobile App Development',
+    'Mobile Development',
     'Cybersecurity',
     'Game Development',
     'Artificial Intelligence',
