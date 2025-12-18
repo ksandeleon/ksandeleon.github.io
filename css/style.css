@@ -344,7 +344,7 @@ body {
 .aboutme-container {
     display: flex;
     gap: clamp(24px, 5vw, 48px);
-    max-width: 55%;
+    max-width: 65%;
     width: 100%;
 }
 
@@ -1078,7 +1078,7 @@ body {
     }
 
     .intro-tagline {
-        padding: 0 32px;
+        padding: 0 4px;
     }
 
     .projects-title {
