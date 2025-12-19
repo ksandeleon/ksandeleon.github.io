@@ -1216,10 +1216,6 @@ body {
         margin-bottom: 32px;
     }
 
-    .contact-item {
-        padding: 12.8px 16px;
-        gap: 12px;
-    }
 
     .contact-label {
         min-width: 40px;
@@ -1356,12 +1352,7 @@ body {
         gap: 16px;
     }
 
-    .contact-item {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 12.8px 16px;
-        gap: 8px;
-    }
+
 
     .contact-value {
         word-break: break-word;
