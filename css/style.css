@@ -437,9 +437,10 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding: 0;
+    padding: 0 16px;
     width: 100%;
     overflow-y: auto;
+    box-sizing: border-box;
 }
 
 .projects-title {
@@ -770,8 +771,9 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding: 0;
+    padding: 0 16px;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .qualifications-title {
@@ -1164,8 +1166,9 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0;
+    padding: 0 16px;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .contacts-title {
@@ -1387,12 +1390,20 @@ body {
         padding: 0 4px;
     }
 
+    .projects-content {
+        padding: 0 32px;
+    }
+
     .qualifications-content {
         padding: 0 32px;
     }
 
     .qualifications-title {
         margin-bottom: 40px;
+    }
+
+    .contacts-content {
+        padding: 0 32px;
     }
 
     .contacts-title {
@@ -1511,10 +1522,6 @@ body {
         padding: 12.8px 25.6px;
     }
 
-    .projects-content {
-        padding: 0 16px;
-    }
-
     .projects-title {
         margin-bottom: 16px;
     }
@@ -1590,10 +1597,6 @@ body {
         margin-left: -8px;
     }
 
-    .qualifications-content {
-        padding: 0 16px;
-    }
-
     .qualifications-title {
         margin-bottom: 24px;
     }
@@ -1610,10 +1613,6 @@ body {
 
     .qualification-location {
         line-height: 1.5;
-    }
-
-    .contacts-content {
-        padding: 0 16px;
     }
 
     .contacts-title {
