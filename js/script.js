@@ -222,3 +222,118 @@ async function fetchGitHubStats() {
 document.addEventListener('DOMContentLoaded', () => {
     fetchGitHubStats();
 });
+
+// ===== TRAINING & CERTIFICATIONS BOTTOM SHEET =====
+document.addEventListener('DOMContentLoaded', function() {
+    const triggerBtn = document.getElementById('trainingTriggerBtn');
+    const trainingSheet = document.getElementById('trainingSheet');
+    const sheetContent = document.getElementById('sheetContent');
+    const closeBtn = document.getElementById('closeSheetBtn');
+    const overlay = document.getElementById('sheetOverlay');
+    const dragHandle = document.getElementById('dragHandle');
+
+    let isDragging = false;
+    let startY = 0;
+    let startHeight = 0;
+    let currentHeight = 0;
+
+    // Open sheet
+    if (triggerBtn) {
+        triggerBtn.addEventListener('click', function() {
+            trainingSheet.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scroll
+            document.documentElement.style.overflow = 'hidden'; // Prevent html scroll too
+        });
+    }
+
+    // Close sheet function
+    function closeSheet() {
+        trainingSheet.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scroll
+        document.documentElement.style.overflow = ''; // Restore html scroll
+    }
+
+    // Close on button click
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeSheet();
+        });
+    }
+
+    // Close on overlay click
+    if (overlay) {
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) {
+                closeSheet();
+            }
+        });
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && trainingSheet.classList.contains('active')) {
+            closeSheet();
+        }
+    });
+
+    // Drag to resize functionality
+    if (dragHandle && sheetContent) {
+        // Mouse events
+        dragHandle.addEventListener('mousedown', startDragging);
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('mouseup', stopDragging);
+
+        // Touch events
+        dragHandle.addEventListener('touchstart', startDragging);
+        document.addEventListener('touchmove', drag);
+        document.addEventListener('touchend', stopDragging);
+
+        function startDragging(e) {
+            if (!trainingSheet.classList.contains('active')) return;
+            
+            isDragging = true;
+            startY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
+            startHeight = sheetContent.offsetHeight;
+            currentHeight = startHeight;
+            
+            sheetContent.style.transition = 'none';
+            e.preventDefault();
+        }
+
+        function drag(e) {
+            if (!isDragging) return;
+
+            const currentY = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
+            const deltaY = startY - currentY;
+            const newHeight = Math.max(200, Math.min(window.innerHeight * 0.85, startHeight + deltaY));
+            
+            currentHeight = newHeight;
+            sheetContent.style.height = `${newHeight}px`;
+            
+            e.preventDefault();
+        }
+
+        function stopDragging(e) {
+            if (!isDragging) return;
+            
+            isDragging = false;
+            sheetContent.style.transition = '';
+            
+            // Close if dragged down significantly
+            if (currentHeight < 250) {
+                closeSheet();
+            }
+        }
+    }
+
+    // Prevent clicks on training items from closing the sheet
+    const trainingItems = document.querySelectorAll('.training-item');
+    trainingItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    });
+});
+
