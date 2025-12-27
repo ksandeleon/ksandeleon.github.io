@@ -292,12 +292,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         function startDragging(e) {
             if (!trainingSheet.classList.contains('active')) return;
-            
+
             isDragging = true;
             startY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
             startHeight = sheetContent.offsetHeight;
             currentHeight = startHeight;
-            
+
             sheetContent.style.transition = 'none';
             e.preventDefault();
         }
@@ -308,19 +308,19 @@ document.addEventListener('DOMContentLoaded', function() {
             const currentY = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
             const deltaY = startY - currentY;
             const newHeight = Math.max(200, Math.min(window.innerHeight * 0.85, startHeight + deltaY));
-            
+
             currentHeight = newHeight;
             sheetContent.style.height = `${newHeight}px`;
-            
+
             e.preventDefault();
         }
 
         function stopDragging(e) {
             if (!isDragging) return;
-            
+
             isDragging = false;
             sheetContent.style.transition = '';
-            
+
             // Close if dragged down significantly
             if (currentHeight < 250) {
                 closeSheet();
@@ -336,4 +336,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-

@@ -1080,17 +1080,67 @@ body {
     padding-left: 8px;
 }
 
+/* Override section color changes - bottom sheet always stays black with white text */
+.section:not(.active) .training-sheet-content,
+.section .training-sheet-content {
+    background: #000 !important;
+    border: 2px solid #fff !important;
+    border-bottom: none !important;
+}
+
+.section:not(.active) .drag-handle,
+.section .drag-handle {
+    background: #000 !important;
+}
+
+.section:not(.active) .drag-indicator,
+.section .drag-indicator {
+    background: rgba(255, 255, 255, 0.5) !important;
+}
+
+.section:not(.active) .training-sheet-header,
+.section .training-sheet-header {
+    background: #000 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.section:not(.active) .training-sheet-header h3,
+.section .training-sheet-header h3 {
+    color: #f5f5f5 !important;
+}
+
+.section:not(.active) .training-sheet-close,
+.section .training-sheet-close {
+    color: #f5f5f5 !important;
+}
+
+.section:not(.active) .training-sheet-close:hover,
+.section .training-sheet-close:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.section:not(.active) .training-item,
+.section .training-item {
+    color: rgba(255, 255, 255, 0.85) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.section:not(.active) .training-item:hover,
+.section .training-item:hover {
+    color: #fff !important;
+}
+
 /* Responsive adjustments */
 @media (min-width: 768px) {
     .training-sheet-content {
         left: 48px;
         right: 48px;
     }
-    
+
     .training-sheet-header {
         padding: 20px 32px;
     }
-    
+
     .training-sheet-body {
         padding: 24px 32px 40px;
     }
