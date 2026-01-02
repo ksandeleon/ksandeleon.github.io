@@ -1,3 +1,60 @@
+// ===== DISABLE RIGHT-CLICK & INSPECT =====
+// Note: This is easily bypassable and may frustrate users
+// Remove this section if you want to allow inspection
+
+// Disable right-click context menu
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+// Disable common keyboard shortcuts for DevTools
+document.addEventListener('keydown', function(e) {
+    // F12
+    if (e.key === 'F12') {
+        e.preventDefault();
+        return false;
+    }
+    // Ctrl+Shift+I (Windows/Linux) or Cmd+Option+I (Mac)
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'I') {
+        e.preventDefault();
+        return false;
+    }
+    // Ctrl+Shift+J (Windows/Linux) or Cmd+Option+J (Mac)
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'J') {
+        e.preventDefault();
+        return false;
+    }
+    // Ctrl+Shift+C (Windows/Linux) or Cmd+Option+C (Mac)
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'C') {
+        e.preventDefault();
+        return false;
+    }
+    // Ctrl+U (View Source)
+    if ((e.ctrlKey || e.metaKey) && e.key === 'u') {
+        e.preventDefault();
+        return false;
+    }
+});
+
+// Detect if DevTools is open (basic detection)
+let devtoolsOpen = false;
+const threshold = 160;
+
+setInterval(function() {
+    if (window.outerWidth - window.innerWidth > threshold ||
+        window.outerHeight - window.innerHeight > threshold) {
+        if (!devtoolsOpen) {
+            devtoolsOpen = true;
+            // Optional: redirect or show warning
+            // window.location.href = 'about:blank';
+        }
+    } else {
+        devtoolsOpen = false;
+    }
+}, 500);
+
+
 // ===== TYPING ANIMATION =====
 const typingText = document.querySelector('.typing-text');
 const words = [
