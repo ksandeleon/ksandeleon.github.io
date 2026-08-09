@@ -223,6 +223,61 @@ body {
     letter-spacing: 2.4px;
     white-space: nowrap;
     width: auto;
+    position: relative;
+    display: inline-block;
+    isolation: isolate;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.14);
+}
+
+.intro-name::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    color: rgba(0, 0, 0, 0.72);
+    transform: translate(2px, 3px);
+    filter: blur(1.2px) drop-shadow(0 0 14px rgba(0, 0, 0, 0.38));
+    opacity: 0;
+    pointer-events: none;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(0, 0, 0, 0.06) 26%,
+            rgba(0, 0, 0, 0.28) 42%,
+            rgba(0, 0, 0, 0.78) 50%,
+            rgba(0, 0, 0, 0.28) 58%,
+            rgba(0, 0, 0, 0.06) 74%,
+            transparent 100%);
+    background-size: 260% 100%;
+    background-position: 160% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shadow-sweep 30s linear infinite;
+}
+
+@keyframes shadow-sweep {
+    0% {
+        opacity: 0;
+        background-position: 160% 0;
+    }
+
+    12% {
+        opacity: 0;
+    }
+
+    18% {
+        opacity: 1;
+    }
+
+    88% {
+        opacity: 1;
+        background-position: -160% 0;
+    }
+
+    94%,
+    100% {
+        opacity: 0;
+        background-position: -160% 0;
+    }
 }
 
 /* Color adaptation for name on white background */
