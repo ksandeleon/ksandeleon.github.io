@@ -251,7 +251,7 @@ body {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: shadow-sweep 30s linear infinite;
+    animation: shadow-sweep 17s linear infinite;
 }
 
 @keyframes shadow-sweep {
