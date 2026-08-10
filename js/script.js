@@ -243,6 +243,158 @@ if (photoModalBg && photoModalImg) {
     });
 }
 
+// ===== ABOUT ME CARD DECK =====
+document.addEventListener('DOMContentLoaded', () => {
+    const cardStack = document.querySelector('.aboutme-card-stack');
+
+    if (!cardStack) return;
+
+    const cardData = [
+        {
+            src: 'assets/images/cardimages/1fbb77e1-6c9b-4342-beb5-3d3bdd9f1a75.jpeg',
+            caption: 'Late Night Builds'
+        },
+        {
+            src: 'assets/images/cardimages/2ff5f953-b30a-44e4-814d-c576de5f4685.jpeg',
+            caption: 'Quiet Momentum'
+        },
+        {
+            src: 'assets/images/cardimages/4acfbd43-f42d-4983-9200-8734f2dc0550.jpeg',
+            caption: 'Learning in Motion'
+        },
+        {
+            src: 'assets/images/cardimages/736e5418-cf14-45ed-b489-bde54c3f2277.jpeg',
+            caption: 'Open Source Mindset'
+        },
+        {
+            src: 'assets/images/cardimages/bac4ab09-3dc2-4c32-b3bb-60dd1fb02027.jpeg',
+            caption: 'Creative Flow'
+        },
+        {
+            src: 'assets/images/cardimages/d4f9316b-c1f1-4b2c-b9d2-5ecf075a2d0e.jpeg',
+            caption: 'Deep Focus'
+        },
+        {
+            src: 'assets/images/cardimages/received_1970028833688389.jpeg',
+            caption: 'Side Project Energy'
+        }
+    ];
+
+    const shuffle = (items) => {
+        const copy = [...items];
+        for (let i = copy.length - 1; i > 0; i -= 1) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [copy[i], copy[j]] = [copy[j], copy[i]];
+        }
+        return copy;
+    };
+
+    const applyDeckState = () => {
+        const cards = Array.from(cardStack.querySelectorAll('.stack-card'));
+        const total = cards.length;
+
+        cards.forEach((card, index) => {
+            const center = (total - 1) / 2;
+            const depth = total - index;
+            const x = (index - center) * 6.5;
+            const y = index * 3.5;
+            const rotate = (index - center) * 4.25;
+            const scale = 1 - (total - index - 1) * 0.018;
+
+            card.classList.toggle('is-top', index === total - 1);
+            card.classList.toggle('stack-card-front', index === total - 1);
+            card.classList.toggle('stack-card-back', index !== total - 1);
+
+            card.style.setProperty('--card-x', `${x}px`);
+            card.style.setProperty('--card-y', `${y}px`);
+            card.style.setProperty('--card-rotate', `${rotate}deg`);
+            card.style.setProperty('--card-scale', `${scale}`);
+            card.style.setProperty('--card-hover-y', `${y}px`);
+            card.style.setProperty('--card-hover-scale', `${scale}`);
+            card.style.setProperty('--card-z', `${depth}`);
+        });
+    };
+
+    const renderDeck = () => {
+        cardStack.innerHTML = '';
+
+        shuffle(cardData).forEach((item, index) => {
+            const card = document.createElement('button');
+            card.type = 'button';
+            card.className = 'stack-card';
+            card.setAttribute('aria-label', item.caption);
+            card.style.setProperty('--card-z', `${index + 1}`);
+
+            const img = document.createElement('img');
+            img.className = 'stack-card-image';
+            img.src = item.src;
+            img.alt = item.caption;
+
+            const caption = document.createElement('span');
+            caption.className = 'stack-card-caption';
+            caption.textContent = item.caption;
+
+            card.append(img, caption);
+            cardStack.appendChild(card);
+        });
+
+        applyDeckState();
+    };
+
+    const recycleDeckIfEmpty = () => {
+        if (!cardStack.querySelector('.stack-card')) {
+            window.setTimeout(renderDeck, 180);
+        } else {
+            applyDeckState();
+        }
+    };
+
+    const sendCardOut = (card) => {
+        if (!card.classList.contains('is-top') || card.classList.contains('is-exiting')) return;
+
+        const cardIndex = Array.from(cardStack.children).indexOf(card);
+        const exitSide = cardIndex % 2 === 0 ? 'left' : 'right';
+        card.classList.add('is-exiting', `exit-${exitSide}`);
+
+        const finish = () => {
+            card.removeEventListener('transitionend', onTransitionEnd);
+            card.remove();
+            recycleDeckIfEmpty();
+        };
+
+        const onTransitionEnd = (event) => {
+            if (event.propertyName !== 'transform' && event.propertyName !== 'opacity') return;
+            finish();
+        };
+
+        card.addEventListener('transitionend', onTransitionEnd);
+
+        window.setTimeout(() => {
+            if (card.isConnected && card.classList.contains('is-exiting')) {
+                finish();
+            }
+        }, 520);
+    };
+
+    cardStack.addEventListener('click', (event) => {
+        const card = event.target.closest('.stack-card');
+        if (!card || !cardStack.contains(card)) return;
+        sendCardOut(card);
+    });
+
+    cardStack.addEventListener('keydown', (event) => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+
+        const card = event.target.closest('.stack-card');
+        if (!card || !cardStack.contains(card)) return;
+
+        event.preventDefault();
+        sendCardOut(card);
+    });
+
+    renderDeck();
+});
+
 // ===== GITHUB STATS FETCHER =====
 async function fetchGitHubStats() {
     const statElements = document.querySelectorAll('[data-repo]');
