@@ -252,15 +252,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const cardData = [
         {
             src: 'assets/images/cardimages/1fbb77e1-6c9b-4342-beb5-3d3bdd9f1a75.jpeg',
-            caption: 'Going At It'
+            caption: 'Ready for the Next'
         },
         {
             src: 'assets/images/cardimages/2ff5f953-b30a-44e4-814d-c576de5f4685.jpeg',
-            caption: 'Late Thesis Nights'
+            caption: 'Late Night Coding Sessions'
         },
         {
             src: 'assets/images/cardimages/4acfbd43-f42d-4983-9200-8734f2dc0550.jpeg',
-            caption: 'I.T. Congress 2025'
+            caption: 'EARIST I.T. Congress'
         },
         {
             src: 'assets/images/cardimages/736e5418-cf14-45ed-b489-bde54c3f2277.jpeg',
@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             src: 'assets/images/cardimages/bac4ab09-3dc2-4c32-b3bb-60dd1fb02027.jpeg',
-            caption: 'Old Photo of Me'
+            caption: 'From the Archives..'
         },
         {
             src: 'assets/images/cardimages/d4f9316b-c1f1-4b2c-b9d2-5ecf075a2d0e.jpeg',
@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             src: 'assets/images/cardimages/received_1970028833688389.jpeg',
-            caption: 'Graduation Day'
+            caption: 'A Journey Completed'
         }
     ];
 
@@ -398,18 +398,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const nextDeck = shuffle(cardData);
         populateDeck(nextDeck);
 
-        window.requestAnimationFrame(() => {
-            const cards = getCards();
+        window.setTimeout(() => {
+            window.requestAnimationFrame(() => {
+                const cards = getCards();
 
-            cards.forEach(card => {
-                card.classList.remove('is-exiting', 'exit-left', 'exit-right');
-                card.disabled = false;
-                card.tabIndex = 0;
+                cards.forEach(card => {
+                    card.classList.remove('is-exiting', 'exit-left', 'exit-right');
+                    card.disabled = false;
+                    card.tabIndex = 0;
+                });
+
+                applyDeckState();
+                isRefilling = false;
             });
-
-            applyDeckState();
-            isRefilling = false;
-        });
+        }, 180);
     };
 
     const sendCardOut = (card) => {

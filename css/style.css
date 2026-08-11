@@ -432,7 +432,7 @@ body {
     transform-origin: center center;
     transform: translate(-50%, -50%) translate(var(--card-x, 0px), var(--card-hover-y, var(--card-y, 0px))) rotate(var(--card-rotate, 0deg)) scale(var(--card-hover-scale, var(--card-scale, 1)));
     z-index: var(--card-z, 1);
-    transition: transform 0.48s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.48s ease, filter 0.48s ease, opacity 0.48s ease;
+    transition: transform 0.82s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.82s ease, filter 0.82s ease, opacity 0.82s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -462,10 +462,11 @@ body {
 .stack-card-caption {
     margin: 8px 6px 0;
     font-size: clamp(1.05rem, 1.7vw, 1.35rem);
-    letter-spacing: 0.8px;
+    letter-spacing: 0.4px;
     text-align: center;
     font-weight: 600;
     line-height: 1.2;
+    font-family: Georgia, 'Times New Roman', serif;
 }
 
 .stack-card-back {
@@ -1624,8 +1625,8 @@ body {
     }
 
     .aboutme-title {
-        margin-bottom: 18px;
-        margin-top: 0;
+        margin-bottom: 0;
+        margin-top: 32px;
     }
 
     .qualifications-content {
