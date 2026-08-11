@@ -495,12 +495,14 @@ body {
 }
 
 .stack-card.exit-left {
-    transform: translate(-165%, -50%) rotate(-24deg) scale(0.96);
+    /* Reverted back to % so distance is based on card width, not screen width */
+    transform: translate(-165%, -50%) rotate(-18deg) scale(0.96);
     opacity: 0;
 }
 
 .stack-card.exit-right {
-    transform: translate(65%, -50%) rotate(22deg) scale(0.96);
+    /* Reverted back to % so distance is based on card width, not screen width */
+    transform: translate(65%, -50%) rotate(18deg) scale(0.96);
     opacity: 0;
 }
 

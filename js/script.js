@@ -289,77 +289,153 @@ document.addEventListener('DOMContentLoaded', () => {
         return copy;
     };
 
-    const applyDeckState = () => {
-        const cards = Array.from(cardStack.querySelectorAll('.stack-card'));
-        const total = cards.length;
+    const getCards = () => Array.from(cardStack.querySelectorAll('.stack-card'));
+    let nextExitSide = 'left';
+    let isRefilling = false;
 
-        cards.forEach((card, index) => {
-            const center = (total - 1) / 2;
-            const depth = total - index;
-            const x = (index - center) * 6.5;
-            const y = index * 3.5;
-            const rotate = (index - center) * 4.25;
-            const scale = 1 - (total - index - 1) * 0.018;
+    const buildCard = (item) => {
+        const card = document.createElement('button');
+        card.type = 'button';
+        card.className = 'stack-card';
+        card.setAttribute('aria-label', item.caption);
+
+        const img = document.createElement('img');
+        img.className = 'stack-card-image';
+        img.src = item.src;
+        img.alt = item.caption;
+
+        const caption = document.createElement('span');
+        caption.className = 'stack-card-caption';
+        caption.textContent = item.caption;
+
+        card.append(img, caption);
+        cardStack.appendChild(card);
+        return card;
+    };
+
+    const updateCardContent = (card, item) => {
+        const img = card.querySelector('.stack-card-image');
+        const caption = card.querySelector('.stack-card-caption');
+
+        if (img) {
+            img.src = item.src;
+            img.alt = item.caption;
+        }
+
+        if (caption) {
+            caption.textContent = item.caption;
+        }
+
+        card.setAttribute('aria-label', item.caption);
+    };
+
+    const getActiveCards = () => getCards().filter(card => !card.classList.contains('is-exiting'));
+
+    const applyDeckState = () => {
+        const cards = getCards();
+        const activeCards = cards.filter(card => !card.classList.contains('is-exiting'));
+        const total = activeCards.length;
+
+        activeCards.forEach((card, index) => {
+            const direction = index % 2 === 0 ? -1 : 1;
+            const stackDepth = total - index;
+            const x = direction * Math.min(10, 1.5 + index * 0.8);
+            const y = index * 7 + (direction === 1 ? 1.5 : 0);
+            const rotate = direction * (1.15 + index * 0.45);
+            const scale = 1 - (total - index - 1) * 0.015;
 
             card.classList.toggle('is-top', index === total - 1);
             card.classList.toggle('stack-card-front', index === total - 1);
             card.classList.toggle('stack-card-back', index !== total - 1);
 
+            card.disabled = false;
+            card.tabIndex = 0;
             card.style.setProperty('--card-x', `${x}px`);
             card.style.setProperty('--card-y', `${y}px`);
             card.style.setProperty('--card-rotate', `${rotate}deg`);
             card.style.setProperty('--card-scale', `${scale}`);
             card.style.setProperty('--card-hover-y', `${y}px`);
             card.style.setProperty('--card-hover-scale', `${scale}`);
-            card.style.setProperty('--card-z', `${depth}`);
+            card.style.setProperty('--card-z', `${stackDepth}`);
+        });
+
+        cards.forEach(card => {
+            if (card.classList.contains('is-exiting')) {
+                card.classList.remove('is-top');
+                card.classList.remove('stack-card-front');
+                card.classList.add('stack-card-back');
+                card.disabled = true;
+                card.tabIndex = -1;
+            }
+        });
+    };
+
+    const populateDeck = (items) => {
+        const cards = getCards();
+
+        if (!items.length) return;
+
+        cards.forEach((card, index) => {
+            updateCardContent(card, items[index % items.length]);
         });
     };
 
     const renderDeck = () => {
         cardStack.innerHTML = '';
 
-        shuffle(cardData).forEach((item, index) => {
-            const card = document.createElement('button');
-            card.type = 'button';
-            card.className = 'stack-card';
-            card.setAttribute('aria-label', item.caption);
-            card.style.setProperty('--card-z', `${index + 1}`);
-
-            const img = document.createElement('img');
-            img.className = 'stack-card-image';
-            img.src = item.src;
-            img.alt = item.caption;
-
-            const caption = document.createElement('span');
-            caption.className = 'stack-card-caption';
-            caption.textContent = item.caption;
-
-            card.append(img, caption);
-            cardStack.appendChild(card);
+        shuffle(cardData).forEach((item) => {
+            buildCard(item);
         });
 
         applyDeckState();
     };
 
-    const recycleDeckIfEmpty = () => {
-        if (!cardStack.querySelector('.stack-card')) {
-            window.setTimeout(renderDeck, 180);
-        } else {
+    const refillDeck = () => {
+        if (isRefilling) return;
+
+        isRefilling = true;
+
+        const nextDeck = shuffle(cardData);
+        populateDeck(nextDeck);
+
+        window.requestAnimationFrame(() => {
+            const cards = getCards();
+
+            cards.forEach(card => {
+                card.classList.remove('is-exiting', 'exit-left', 'exit-right');
+                card.disabled = false;
+                card.tabIndex = 0;
+            });
+
             applyDeckState();
-        }
+            isRefilling = false;
+        });
     };
 
     const sendCardOut = (card) => {
-        if (!card.classList.contains('is-top') || card.classList.contains('is-exiting')) return;
+        if (!card.classList.contains('is-top') || card.classList.contains('is-exiting') || isRefilling) return;
 
-        const cardIndex = Array.from(cardStack.children).indexOf(card);
-        const exitSide = cardIndex % 2 === 0 ? 'left' : 'right';
+        const exitSide = nextExitSide;
+        nextExitSide = nextExitSide === 'left' ? 'right' : 'left';
+
         card.classList.add('is-exiting', `exit-${exitSide}`);
+        card.classList.remove('is-top');
+        card.disabled = true;
+        card.tabIndex = -1;
+
+        applyDeckState();
+
+        let finished = false;
 
         const finish = () => {
+            if (finished) return;
+
+            finished = true;
             card.removeEventListener('transitionend', onTransitionEnd);
-            card.remove();
-            recycleDeckIfEmpty();
+
+            if (!getActiveCards().length) {
+                refillDeck();
+            }
         };
 
         const onTransitionEnd = (event) => {
@@ -373,7 +449,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (card.isConnected && card.classList.contains('is-exiting')) {
                 finish();
             }
-        }, 520);
+        }, 700);
     };
 
     cardStack.addEventListener('click', (event) => {
