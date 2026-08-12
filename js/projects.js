@@ -1,136 +1,258 @@
 const username = 'ksandeleon';
-const projectsContainer = document.querySelector('.projects-container');
-const searchInput = document.getElementById('project-search');
-const paginationContainer = document.getElementById('pagination');
+const showcaseCard = document.getElementById('project-showcase-card');
+const projectIndex = document.getElementById('project-index');
+const projectLanguage = document.getElementById('project-language');
+const projectTitle = document.getElementById('project-title');
+const projectDescription = document.getElementById('project-description');
+const projectStats = document.getElementById('project-stats');
+const projectLink = document.getElementById('project-link');
+const projectsStatus = document.getElementById('projects-status');
+const projectsCanvas = document.getElementById('projects-visual-canvas');
 
-let allProjects = [];
-let filteredProjects = [];
-let currentPage = 1;
-const projectsPerPage = 4;
+const projectRotationDelay = 5000;
+const projectFadeDuration = 450;
 
-// Fetch projects from GitHub
-async function fetchProjects() {
-    try {
-        const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
-        if (!response.ok) throw new Error('Failed to fetch projects');
-        const data = await response.json();
+let projects = [];
+let currentProjectIndex = 0;
+let rotationTimer = null;
+let canvasFrame = null;
+let canvasContext = null;
+let canvasWidth = 0;
+let canvasHeight = 0;
+let visualNodes = [];
 
-        // Filter out forks if desired, or keep them. User said "all projects".
-        // Let's keep public repos.
-        allProjects = data;
-        filteredProjects = allProjects;
+function formatCount(value) {
+    return new Intl.NumberFormat('en-US').format(value || 0);
+}
 
-        renderProjects();
-        setupPagination();
-    } catch (error) {
-        console.error(error);
-        projectsContainer.innerHTML = '<p class="error-message">Failed to load projects. Please try again later.</p>';
+function normalizeProject(repo) {
+    return {
+        name: repo.name,
+        description: repo.description || 'No description available.',
+        url: repo.html_url,
+        stars: repo.stargazers_count || 0,
+        forks: repo.forks_count || 0,
+        language: repo.language || 'Repository',
+        updatedAt: repo.updated_at || '',
+        pushedAt: repo.pushed_at || ''
+    };
+}
+
+function setStatus(message) {
+    if (projectsStatus) {
+        projectsStatus.textContent = message;
     }
 }
 
-function renderProjects() {
-    projectsContainer.innerHTML = '';
+function renderStats(project) {
+    const stats = [
+        { label: 'Stars', value: formatCount(project.stars) },
+        { label: 'Forks', value: formatCount(project.forks) },
+        { label: 'Updated', value: project.updatedAt ? new Date(project.updatedAt).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) : 'Recent' }
+    ];
 
-    const start = (currentPage - 1) * projectsPerPage;
-    const end = start + projectsPerPage;
-    const projectsToShow = filteredProjects.slice(start, end);
+    projectStats.innerHTML = stats.map(stat => `
+        <div class="project-stat-chip">
+            <span class="project-stat-value">${stat.value}</span>
+            <span class="project-stat-label">${stat.label}</span>
+        </div>
+    `).join('');
+}
 
-    if (projectsToShow.length === 0) {
-        projectsContainer.innerHTML = '<p class="no-projects">No projects found.</p>';
+function renderProject(index, { animate = true } = {}) {
+    if (!projects.length || !showcaseCard) {
         return;
     }
 
-    projectsToShow.forEach(repo => {
-        const card = document.createElement('div');
-        card.className = 'project-card';
+    const project = projects[index];
+    const nextIndexLabel = String(index + 1).padStart(2, '0');
 
-        card.innerHTML = `
-            <div class="project-main">
-                <div class="project-info">
-                    <h3 class="project-name">${repo.name}</h3>
-                    <p class="project-description">${repo.description || 'No description available.'}</p>
-                </div>
-                <a href="${repo.html_url}" target="_blank" class="project-link">
-                    <img src="assets/icons/github.svg" alt="GitHub" class="project-icon" />
-                    <img src="assets/icons/arrow-up-right.svg" alt="External" class="project-external" />
-                </a>
-            </div>
-            <div class="project-stats">
-                <div class="stat-item">
-                    <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                    </svg>
-                    <span class="stat-value">${repo.stargazers_count}</span>
-                </div>
-                <div class="stat-item">
-                    <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="6" y1="3" x2="6" y2="15"></line>
-                        <circle cx="18" cy="6" r="3"></circle>
-                        <circle cx="6" cy="18" r="3"></circle>
-                        <path d="M18 9a9 9 0 0 1-9 9"></path>
-                    </svg>
-                    <span class="stat-value">${repo.forks_count}</span>
-                </div>
-                ${repo.language ? `
-                <div class="stat-item">
-                    <span class="stat-value language-tag">${repo.language}</span>
-                </div>` : ''}
-            </div>
-        `;
+    const commitRender = () => {
+        if (projectIndex) {
+            projectIndex.textContent = nextIndexLabel;
+        }
 
-        projectsContainer.appendChild(card);
-    });
+        if (projectLanguage) {
+            projectLanguage.textContent = project.language;
+        }
 
-    updatePaginationButtons();
+        if (projectTitle) {
+            projectTitle.textContent = project.name;
+        }
+
+        if (projectDescription) {
+            projectDescription.textContent = project.description;
+        }
+
+        renderStats(project);
+
+        if (projectLink) {
+            projectLink.href = project.url;
+        }
+
+        setStatus(`Project ${index + 1} of ${projects.length}`);
+    };
+
+    if (!animate || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        showcaseCard.classList.remove('is-fading');
+        commitRender();
+        return;
+    }
+
+    showcaseCard.classList.add('is-fading');
+    window.setTimeout(() => {
+        commitRender();
+        showcaseCard.classList.remove('is-fading');
+    }, projectFadeDuration);
 }
 
-function setupPagination() {
-    paginationContainer.innerHTML = `
-        <button id="prev-btn" class="pagination-btn" disabled>&lt; Prev</button>
-        <span id="page-info" class="page-info">Page 1</span>
-        <button id="next-btn" class="pagination-btn">Next &gt;</button>
-    `;
+function scheduleRotation() {
+    if (rotationTimer) {
+        window.clearInterval(rotationTimer);
+    }
 
-    document.getElementById('prev-btn').addEventListener('click', () => {
-        if (currentPage > 1) {
-            currentPage--;
-            renderProjects();
-        }
-    });
+    if (projects.length <= 1) {
+        return;
+    }
 
-    document.getElementById('next-btn').addEventListener('click', () => {
-        const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
-        if (currentPage < totalPages) {
-            currentPage++;
-            renderProjects();
-        }
-    });
+    rotationTimer = window.setInterval(() => {
+        currentProjectIndex = (currentProjectIndex + 1) % projects.length;
+        renderProject(currentProjectIndex);
+    }, projectRotationDelay);
 }
 
-function updatePaginationButtons() {
-    const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-    const pageInfo = document.getElementById('page-info');
+function getCanvasSize() {
+    const rect = projectsCanvas.getBoundingClientRect();
+    const ratio = window.devicePixelRatio || 1;
+    canvasWidth = Math.max(1, Math.floor(rect.width * ratio));
+    canvasHeight = Math.max(1, Math.floor(rect.height * ratio));
+    projectsCanvas.width = canvasWidth;
+    projectsCanvas.height = canvasHeight;
+    canvasContext.setTransform(ratio, 0, 0, ratio, 0, 0);
+    canvasContext.clearRect(0, 0, rect.width, rect.height);
 
-    if (prevBtn && nextBtn && pageInfo) {
-        prevBtn.disabled = currentPage === 1;
-        nextBtn.disabled = currentPage === totalPages || totalPages === 0;
-        pageInfo.textContent = `Page ${currentPage} of ${totalPages || 1}`;
+    visualNodes = Array.from({ length: Math.max(12, Math.floor((rect.width * rect.height) / 26000)) }, (_, index) => ({
+        x: Math.random() * rect.width,
+        y: Math.random() * rect.height,
+        radius: 1.2 + Math.random() * 2.6,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        hue: 190 + (index % 4) * 18
+    }));
+}
+
+function drawCanvas() {
+    if (!canvasContext || !projectsCanvas) {
+        return;
+    }
+
+    const rect = projectsCanvas.getBoundingClientRect();
+    canvasContext.clearRect(0, 0, rect.width, rect.height);
+
+    const gradient = canvasContext.createLinearGradient(0, 0, rect.width, rect.height);
+    gradient.addColorStop(0, 'rgba(0, 180, 255, 0.14)');
+    gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.04)');
+    gradient.addColorStop(1, 'rgba(0, 0, 0, 0.08)');
+    canvasContext.fillStyle = gradient;
+    canvasContext.fillRect(0, 0, rect.width, rect.height);
+
+    visualNodes.forEach(node => {
+        node.x += node.vx;
+        node.y += node.vy;
+
+        if (node.x < -20) node.x = rect.width + 20;
+        if (node.x > rect.width + 20) node.x = -20;
+        if (node.y < -20) node.y = rect.height + 20;
+        if (node.y > rect.height + 20) node.y = -20;
+
+        canvasContext.beginPath();
+        canvasContext.fillStyle = `hsla(${node.hue}, 100%, 75%, 0.85)`;
+        canvasContext.shadowColor = 'rgba(120, 220, 255, 0.6)';
+        canvasContext.shadowBlur = 10;
+        canvasContext.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+        canvasContext.fill();
+    });
+
+    for (let i = 0; i < visualNodes.length; i += 1) {
+        for (let j = i + 1; j < visualNodes.length; j += 1) {
+            const first = visualNodes[i];
+            const second = visualNodes[j];
+            const distance = Math.hypot(first.x - second.x, first.y - second.y);
+
+            if (distance < 130) {
+                canvasContext.beginPath();
+                canvasContext.strokeStyle = `rgba(160, 235, 255, ${0.18 - distance / 800})`;
+                canvasContext.lineWidth = 1;
+                canvasContext.moveTo(first.x, first.y);
+                canvasContext.lineTo(second.x, second.y);
+                canvasContext.stroke();
+            }
+        }
+    }
+
+    canvasContext.shadowBlur = 0;
+    canvasFrame = window.requestAnimationFrame(drawCanvas);
+}
+
+function startCanvasAnimation() {
+    if (!projectsCanvas) {
+        return;
+    }
+
+    canvasContext = projectsCanvas.getContext('2d');
+
+    if (!canvasContext) {
+        return;
+    }
+
+    getCanvasSize();
+    drawCanvas();
+
+    window.addEventListener('resize', () => {
+        getCanvasSize();
+    }, { passive: true });
+}
+
+async function fetchProjects() {
+    if (!projectsStatus || !showcaseCard) {
+        return;
+    }
+
+    try {
+        setStatus('Loading projects...');
+
+        const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch projects');
+        }
+
+        const data = await response.json();
+        projects = data
+            .filter(repo => !repo.fork)
+            .map(normalizeProject)
+            .sort((left, right) => new Date(right.updatedAt || right.pushedAt || 0) - new Date(left.updatedAt || left.pushedAt || 0));
+
+        if (!projects.length) {
+            setStatus('No projects found.');
+            projectTitle.textContent = 'No projects found.';
+            projectDescription.textContent = 'Add repositories to your GitHub profile to populate this showcase.';
+            projectStats.innerHTML = '';
+            return;
+        }
+
+        renderProject(0, { animate: false });
+        scheduleRotation();
+    } catch (error) {
+        console.error(error);
+        setStatus('Failed to load projects.');
+        projectTitle.textContent = 'Failed to load projects.';
+        projectDescription.textContent = 'Please try again later.';
+        projectStats.innerHTML = '';
     }
 }
 
-// Search functionality
-searchInput.addEventListener('input', (e) => {
-    const searchTerm = e.target.value.toLowerCase();
-    filteredProjects = allProjects.filter(project =>
-        project.name.toLowerCase().includes(searchTerm) ||
-        (project.description && project.description.toLowerCase().includes(searchTerm))
-    );
-    currentPage = 1;
-    renderProjects();
-    updatePaginationButtons();
+document.addEventListener('DOMContentLoaded', () => {
+    startCanvasAnimation();
+    fetchProjects();
 });
-
-// Initialize
-document.addEventListener('DOMContentLoaded', fetchProjects);
